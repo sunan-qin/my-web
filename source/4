@@ -9,19 +9,22 @@
 
 
 | Component                 | Details                                                                 |
-
 |---------------------------|-------------------------------------------------------------------------|
-
 | **CPU Model**             | Intel(R) Core(TM) i7-10750H CPU @ 2.60GHz (6 cores, 12 threads)         |
-
 | **Memory Size**           | 7.7 GiB total (7.2 GiB available)                                       |
-
 | **Operating System**      | Linux xuming 6.6.87.2-microsoft-standard-WSL2 (x86_64)                  |
-
-| **Compiler Version**      |(Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0                                  |
-                    
+| **Compiler Version**      |(Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0                                                          |
 | **Python Version**        | Python 3.9.7                                                            |
-
+| Component | Detail |
+| :---: | :---: |
+| **CPU Model** | Intel(R) Core(TM) i7-10750H CPU @ 2.60GHz (6 cores, 12 threads) |
+| **Memory Size** | 7.7 GiB total (7.2 GiB available) |
+| **Operating System** | Linux xuming 6.6.87.2-microsoft-standard-WSL2 (x86_64) |
+| **Compiler Version** | (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0 |
+| **Python Version** | Python 3.9.7 |
+|component|detail|
+|---|---|
+|1|2|
 ## Implementation Details
 
 ## Python Language Implementation
