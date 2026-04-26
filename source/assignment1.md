@@ -80,4 +80,5 @@ if __name__ == "__main__":
 ## Conclusion
 I learned some basic Linux commands, such as creating markdown files, compiling files, and some viewing commands. Markdown is a lightweight markup language that can be applied in any environment and is easy to write and read.
 ## References
-[1] https://daringfireball.net/projects/markdown/
+[1] https://daringfireball.net/projects/markdown
+[2] https://jc.xia852.com/xz/sy.html/
