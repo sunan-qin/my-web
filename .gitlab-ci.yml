@@ -1,0 +1,28 @@
+# GitLab CI/CD configuration for Pages deployment
+# This job will publish the Sphinx-generated HTML as a static website
+
+# 定义一个名为 'pages' 的任务（GitLab Pages 要求任务必须叫这个名字）
+pages:
+  stage: deploy
+  script:
+    # 1. 安装 Sphinx：使用阿里云镜像加速
+    - python -m pip install --upgrade pip -i https://mirrors.aliyun.com/pypi/simple/
+    - pip install sphinx myst-parser -i https://mirrors.aliyun.com/pypi/simple/
+
+    # 2. 构建文档：假设你的 Sphinx 源文件在 ./source 目录，执行 make html
+    - sphinx-build -b html source build/html
+
+    # 3. 准备 GitLab Pages 部署目录：因为 Pages 服务默认只认 'public' 文件夹[reference:8]
+    - mkdir -p public
+    - cp -r build/html/* public/
+
+    # 可选：列出 public 目录内容，方便在 CI/CD 日志中调试
+    - ls -la public/
+
+  artifacts:
+    paths:
+      - public
+  rules:
+    # 触发条件：仅在推送到默认分支（如 main）时执行，并确保使用 'pages' 任务
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: always
