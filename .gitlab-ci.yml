@@ -1,80 +1,16 @@
-<<<<<<< HEAD
 # GitLab CI/CD configuration for Pages deployment
-# This job will publish the Sphinx-generated HTML as a static website
-
-# 定义一个名为 'pages' 的任务（GitLab Pages 要求任务必须叫这个名字）
 pages:
   stage: deploy
   script:
-    # 1. 安装 Sphinx：使用阿里云镜像加速
     - python -m pip install --upgrade pip -i https://mirrors.aliyun.com/pypi/simple/
     - pip install sphinx myst-parser -i https://mirrors.aliyun.com/pypi/simple/
-
-    # 2. 构建文档：假设你的 Sphinx 源文件在 ./source 目录，执行 make html
     - sphinx-build -b html source build/html
-
-    # 3. 准备 GitLab Pages 部署目录：因为 Pages 服务默认只认 'public' 文件夹[reference:8]
     - mkdir -p public
     - cp -r build/html/* public/
-
-    # 可选：列出 public 目录内容，方便在 CI/CD 日志中调试
     - ls -la public/
-
   artifacts:
     paths:
       - public
   rules:
-    # 触发条件：仅在推送到默认分支（如 main）时执行，并确保使用 'pages' 任务
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
       when: always
-=======
-# This file is a template, and might need editing before it works on your project.
-# This is a sample GitLab CI/CD configuration file that should run without any modifications.
-# It demonstrates a basic 3 stage CI/CD pipeline. Instead of real tests or scripts,
-# it uses echo commands to simulate the pipeline execution.
-#
-# A pipeline is composed of independent jobs that run scripts, grouped into stages.
-# Stages run in sequential order, but jobs within stages run in parallel.
-#
-# For more information, see: https://docs.gitlab.com/ee/ci/yaml/#stages
-#
-# You can copy and paste this template into a new `.gitlab-ci.yml` file.
-# You should not add this template to an existing `.gitlab-ci.yml` file by using the `include:` keyword.
-#
-# To contribute improvements to CI/CD templates, please follow the Development guide at:
-# https://docs.gitlab.com/development/cicd/templates/
-# This specific template is located at:
-# https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Getting-Started.gitlab-ci.yml
-
-stages:          # List of stages for jobs, and their order of execution
-  - build
-  - test
-  - deploy
-
-build-job:       # This job runs in the build stage, which runs first.
-  stage: build
-  script:
-    - echo "Compiling the code..."
-    - echo "Compile complete."
-
-unit-test-job:   # This job runs in the test stage.
-  stage: test    # It only starts when the job in the build stage completes successfully.
-  script:
-    - echo "Running unit tests... This will take about 60 seconds."
-    - sleep 60
-    - echo "Code coverage is 90%"
-
-lint-test-job:   # This job also runs in the test stage.
-  stage: test    # It can run at the same time as unit-test-job (in parallel).
-  script:
-    - echo "Linting code... This will take about 10 seconds."
-    - sleep 10
-    - echo "No lint issues found."
-
-deploy-job:      # This job runs in the deploy stage.
-  stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
-  environment: production
-  script:
-    - echo "Deploying application..."
-    - echo "Application successfully deployed."
->>>>>>> cc329bbb6dc67eb264d42832500b1493067845d1
