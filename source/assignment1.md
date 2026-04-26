@@ -1,0 +1,83 @@
+# Assignment1
+# Remote Development Project Report
+
+**Student Name**: 【qin sunan]  
+**Student ID**: [ZY2557117]  
+
+
+## System Configuration
+
+
+| Component                 | Details                                                                 |
+|---------------------------|-------------------------------------------------------------------------|
+| **CPU Model**             | Intel(R) Core(TM) i7-10750H CPU @ 2.60GHz (6 cores, 12 threads)         |
+| **Memory Size**           | 7.7 GiB total (7.2 GiB available)                                       |
+| **Operating System**      | Linux xuming 6.6.87.2-microsoft-standard-WSL2 (x86_64)                  |
+| **Compiler Version**      |(Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0                                                          |
+| **Python Version**        | Python 3.9.7                                                            |
+
+## Implementation Details
+
+## Python Language Implementation
+
+- **Source Code**: (`matmul.py`)
+
+```python
+"""
+Compute matrix multiplication in Python.
+Computes C = A * B where A is m x n and B is n x p.
+"""
+
+def matmul(A, B):
+    """Multiply two matrices A and B."""
+    # Get dimensions
+    m = len(A)                     # rows of A
+    n = len(A[0]) if m > 0 else 0  # columns of A
+    p = len(B[0]) if B else 0      # columns of B
+
+    # Validate: number of columns in A must equal number of rows in B
+    if len(B) != n:
+        raise ValueError(f"Cannot multiply: A columns ({n}) != B rows ({len(B)})")
+
+    # Create result matrix filled with zeros (m rows, p columns)
+    C = [[0 for _ in range(p)] for _ in range(m)]
+
+    # Triple nested loop for multiplication
+    for i in range(m):
+        for j in range(p):
+            total = 0
+            for k in range(n):
+                total += A[i][k] * B[k][j]
+            C[i][j] = total
+    return C
+
+- **Execution Command**
+To execute this matrix multiplication, copy the code and save it in this file matmul_simple.py then run this python matmul_simple.py in your terminal
+
+### Algorithm Verification
+if __name__ == "__main__":
+    # 2x2 matrices
+    A = [[1, 2],
+         [3, 4]]
+    B = [[2, 0],
+         [1, 2]]
+    expected = [[4, 4],
+                [10, 8]]
+
+    result = matmul(A, B)
+
+    print("A =", A)
+    print("B =", B)
+    print("A * B =", result)
+    print("Expected =", expected)
+
+    if result == expected:
+        print("✓ Verification PASSED (hand-computed 2x2 case)")
+    else:
+        print("✗ Verification FAILED")
+```
+ 
+## Conclusion
+I learned some basic Linux commands, such as creating markdown files, compiling files, and some viewing commands. Markdown is a lightweight markup language that can be applied in any environment and is easy to write and read.
+## References
+[1] https://daringfireball.net/projects/markdown/
