@@ -5,6 +5,13 @@
 
 Welcome to sunan-qin's documentation!
 =====================================
+
+.. image::
+   images/photo.jpg
+   :alt: 我的照片
+   :width: 200px
+   :align: center
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
@@ -13,7 +20,6 @@ Welcome to sunan-qin's documentation!
    features.md
    assignment2.md
    assignment1.md
-
 
 Indices and tables
 ==================
