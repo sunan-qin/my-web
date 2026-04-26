@@ -1,0 +1,17 @@
+# 这个CI/CD任务会将 'public' 文件夹里的内容，发布为你的 GitLab Pages 网站
+pages:
+  stage: deploy
+  script:
+    # 关键步骤：创建一个 'public' 文件夹（Pages服务只认这个文件夹）
+    - mkdir .public
+    # 将你构建好的所有网页文件（在'build/html/'里）全部复制进去
+    - cp -r build/html/* .public
+    # 删除可能已存在的旧 'public' 文件夹
+    - rm -rf public
+    # 重命名 '.public' 文件夹为 'public'
+    - mv .public public
+  artifacts:
+    paths:
+      - public  # 告诉 GitLab 把 'public' 文件夹作为构建产物保留
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH  # 只在推送到默认分支（通常是 main）时运行
