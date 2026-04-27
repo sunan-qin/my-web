@@ -15,7 +15,7 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ```
 cd existing_repo
-git remote add origin http://10.62.192.92:11080/xuming/sunan-qin.git
+git remote add origin https://github.com/sunan-qin/my-web.git
 git branch -M main
 git push -uf origin main
 ```
