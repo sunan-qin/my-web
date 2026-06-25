@@ -37,8 +37,7 @@
 <section id="ai">
 <h2>AI辅助开发报告<a class="headerlink" href="#ai" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p><strong>📥 立即下载</strong>：<a class="reference external" href="./IntelliPaper.exe">点击下载 IntelliPaper.exe（78.7 MB 单文件，免安装）</a>
-<strong>📂 完整源码</strong>：<a class="reference external" href="./smart-lit-manager">smart-lit-manager 项目文件夹</a></p>
+<div><p><strong>📥 立即下载</strong>：<a class="reference external" href="_static/downloads/IntelliPaper.exe">点击下载 IntelliPaper.exe</a></p>
 </div></blockquote>
 </section>
 <hr class="docutils" />
@@ -267,34 +266,11 @@
 | 跨平台数据目录 | ~/.smart-lit-manager → %TEMP%/smart-lit-manager 带fallback |
 | UI响应性 | AI调用进QThread，搜索300ms去抖 |
 | 大PDF性能 | 仅提取前50页，控制全文缓存 |</p>
-</section>
-</section>
 <hr class="docutils" />
-<section id="vi">
-<h2>VI. 下载与使用<a class="headerlink" href="#vi" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p><strong>🌐 网页部署提示</strong>：将该 REPORT.md 与 <a class="reference external" href="./IntelliPaper.exe">IntelliPaper.exe</a> 和 <a class="reference external" href="./smart-lit-manager">smart-lit-manager</a> 源码文件夹放在同一目录上传至网页服务器或 GitHub 仓库，所有下载链接即可自动生效。您也可以直接<a class="reference external" href="./IntelliPaper.exe">打包下载所有文件</a>。</p>
-</div></blockquote>
+<p>`</p>
+</section>
 <section id="id11">
-<h3>方式1：预编译可执行文件（推荐，无需安装）<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p><strong>⬇️ <a class="reference external" href="./IntelliPaper.exe">下载 IntelliPaper.exe（78.7 MB）</a></strong></p>
-</div></blockquote>
-<p>直接双击运行，无需安装Python或任何第三方库。首次运行时会自动在 ~/.smart-lit-manager/ 创建数据库和配置文件。</p>
-</section>
-<section id="id12">
-<h3>方式2：从源码运行<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p><strong>📂 源码目录：<a class="reference external" href="./smart-lit-manager">smart-lit-manager</a></strong></p>
-</div></blockquote>
-<p><code class="docutils literal notranslate"><span class="pre">ash</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">PyQt5</span> <span class="pre">PyMuPDF</span> <span class="pre">Pillow</span> <span class="pre">sentence-transformers</span> <span class="pre">cd</span> <span class="pre">smart-lit-manager</span> <span class="pre">python</span> <span class="pre">main.py</span> </code></p>
-</section>
-<section id="id13">
-<h3>方式3：运行测试<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">ash</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pytest</span> <span class="pre">cd</span> <span class="pre">smart-lit-manager</span> <span class="pre">pytest</span> <span class="pre">tests/</span> <span class="pre">-v</span> </code></p>
-</section>
-<section id="id14">
-<h3>键盘快捷键<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<h3>键盘快捷键<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <p>| 快捷键 | 功能 |
 |--------|------|
 | Ctrl+O | 导入论文 |
@@ -314,8 +290,8 @@
 <hr class="docutils" />
 <section id="viii">
 <h2>VIII. 结论与展望<a class="headerlink" href="#viii" title="Permalink to this headline">¶</a></h2>
-<section id="id15">
-<h3>项目总结<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<section id="id12">
+<h3>项目总结<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <p>IntelliPaper成功地将AI辅助开发从&quot;娱乐式提示&quot;推向了&quot;工程化结果&quot;。项目展示了一个完整的软件工程交付——从架构设计到代码实现、从测试覆盖到可执行打包，全程以LLM（Codex CLI）作为主要开发伙伴完成。</p>
 <p><strong>项目亮点</strong>：</p>
 <ul class="simple">
@@ -327,8 +303,8 @@
 <li><p>✅ 完整的文献管理全流程闭环</p></li>
 </ul>
 </section>
-<section id="id16">
-<h3>后续可能扩展<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<section id="id13">
+<h3>后续可能扩展<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><strong>Web服务版本</strong>：Flask/FastAPI后端 + React前端</p></li>
 <li><p><strong>同步服务</strong>：WebDAV/Nextcloud多设备同步</p></li>
@@ -337,9 +313,7 @@
 <li><p><strong>更多AI能力</strong>：论文翻译、研究方法建议、审稿意见生成</p></li>
 </ul>
 <hr class="docutils" />
-<p><em>报告生成日期：2026年6月15日</em>
-<em>工具：Codex CLI（基于OpenAI gpt-4o）</em>
-<em>开发环境：Windows 11 / Python 3.9 / PyQt5 / SQLite3</em></p>
+<p><em>报告生成日期：2026年6月15日</em></p>
 </section>
 </section>
 </section>
@@ -374,7 +348,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#iii">III. 功能特性清单</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#iv">IV. 开发日志</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#v">V. 关键问题与解决方案</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#vi">VI. 下载与使用</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#vii">VII. 项目结构</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#viii">VIII. 结论与展望</a></li>
 </ul>

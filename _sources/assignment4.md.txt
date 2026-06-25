@@ -2,8 +2,8 @@
 
 ## AI辅助开发报告
 
-> **📥 立即下载**：[点击下载 IntelliPaper.exe（78.7 MB 单文件，免安装）](./IntelliPaper.exe)
-> **📂 完整源码**：[smart-lit-manager 项目文件夹](./smart-lit-manager)
+> **📥 立即下载**：[点击下载 IntelliPaper.exe](_static/downloads/IntelliPaper.exe)
+
 
 ---
 
@@ -255,32 +255,7 @@ MODEL_PROVIDERS = {
 
 ---
 
-## VI. 下载与使用
 
-> **🌐 网页部署提示**：将该 REPORT.md 与 [IntelliPaper.exe](./IntelliPaper.exe) 和 [smart-lit-manager](./smart-lit-manager) 源码文件夹放在同一目录上传至网页服务器或 GitHub 仓库，所有下载链接即可自动生效。您也可以直接[打包下载所有文件](./IntelliPaper.exe)。
-
-### 方式1：预编译可执行文件（推荐，无需安装）
-
-> **⬇️ [下载 IntelliPaper.exe（78.7 MB）](./IntelliPaper.exe)**
-
-直接双击运行，无需安装Python或任何第三方库。首次运行时会自动在 ~/.smart-lit-manager/ 创建数据库和配置文件。
-
-### 方式2：从源码运行
-
-> **📂 源码目录：[smart-lit-manager](./smart-lit-manager)**
-
-`ash
-pip install PyQt5 PyMuPDF Pillow sentence-transformers
-cd smart-lit-manager
-python main.py
-`
-
-### 方式3：运行测试
-
-`ash
-pip install pytest
-cd smart-lit-manager
-pytest tests/ -v
 `
 
 ### 键盘快捷键
@@ -361,5 +336,3 @@ IntelliPaper成功地将AI辅助开发从"娱乐式提示"推向了"工程化结
 ---
 
 *报告生成日期：2026年6月15日*
-*工具：Codex CLI（基于OpenAI gpt-4o）*
-*开发环境：Windows 11 / Python 3.9 / PyQt5 / SQLite3*
