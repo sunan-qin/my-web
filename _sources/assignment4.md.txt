@@ -2,9 +2,9 @@
 
 ## AI辅助开发报告
 
-> **📥 立即下载**：[点击下载 IntelliPaper.exe](_static/downloads/IntelliPaper.exe)
+> **📥 立即下载**：`点击下载 IntelliPaper.exe 
 
-
+<https://github.com/sunan-qin/my-web/blob/main/_static/downloads/IntelliPaper.exe>`_
 ---
 
 ## I. 背景与设计
