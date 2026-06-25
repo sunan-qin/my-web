@@ -1,9 +1,9 @@
-﻿# IntelliPaper — Intelligent Literature Management Tool
+﻿# Assignment 4
 
-## AI-Assisted Development Report
+## IntelliPaper — Intelligent Literature Management Tool
 
-> **📥 Download Now**: [Click to Download IntelliPaper.exe (78.7 MB single file, no installation required)](./IntelliPaper.exe)
-> **📂 Full Source Code**: [smart-lit-manager project folder](./smart-lit-manager)
+> **📥 Download Now**: IntelliPaper.exe 
+<https://github.com/sunan-qin/my-web/blob/main/_static/downloads/IntelliPaper.exe>`_
 
 ---
 
@@ -191,33 +191,6 @@ Throughout the development process, the following prompt design patterns were fo
 
 ---
 
-## VI. Download and Usage
-
-> **🌐 Web Deployment Hint**: Place this REPORT.md together with [IntelliPaper.exe](./IntelliPaper.exe) and the [smart-lit-manager](./smart-lit-manager) source code folder in the same directory and upload to a web server or GitHub repository, and all download links will be automatically functional. You can also [download all files in a single package](./IntelliPaper.exe).
-
-### Method 1: Precompiled Executable (Recommended, No Installation Required)
-
-> **⬇️ [Download IntelliPaper.exe (78.7 MB)](./IntelliPaper.exe)**
-
-Double-click to run, no need to install Python or any third-party libraries. It will automatically create the database and configuration files in ~/.smart-lit-manager/ on first run.
-
-### Method 2: Run from Source
-
-> **📂 Source Directory: [smart-lit-manager](./smart-lit-manager)**
-
-```bash
-pip install PyQt5 PyMuPDF Pillow sentence-transformers
-cd smart-lit-manager
-python main.py
-```
-
-### Method 3: Run Tests
-
-```bash
-pip install pytest
-cd smart-lit-manager
-pytest tests/ -v
-```
 
 ### Keyboard Shortcuts
 
@@ -297,5 +270,3 @@ IntelliPaper successfully advanced AI-assisted development from "entertainment-s
 ---
 
 *Report generation date: June 15, 2026*
-*Tool: Codex CLI (based on OpenAI gpt-4o)*
-*Development environment: Windows 11 / Python 3.9 / PyQt5 / SQLite3*

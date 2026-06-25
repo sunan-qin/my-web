@@ -1,4 +1,4 @@
-﻿# Static Personal Blog Website Setup and Deployment Report
+﻿# Assignment 3
 
 ## I. Project Overview
 
