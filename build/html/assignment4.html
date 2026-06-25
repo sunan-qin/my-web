@@ -1,0 +1,430 @@
+
+<!DOCTYPE html>
+
+<html lang="english">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>IntelliPaper — 智能文献管理工具 &#8212; sunan-qin 1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Assignment 3" href="assignment3.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="intellipaper">
+<h1>IntelliPaper — 智能文献管理工具<a class="headerlink" href="#intellipaper" title="Permalink to this headline">¶</a></h1>
+<section id="ai">
+<h2>AI辅助开发报告<a class="headerlink" href="#ai" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>📥 立即下载</strong>：<a class="reference external" href="./IntelliPaper.exe">点击下载 IntelliPaper.exe（78.7 MB 单文件，免安装）</a>
+<strong>📂 完整源码</strong>：<a class="reference external" href="./smart-lit-manager">smart-lit-manager 项目文件夹</a></p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="i">
+<h2>I. 背景与设计<a class="headerlink" href="#i" title="Permalink to this headline">¶</a></h2>
+<section id="id1">
+<h3>1.1 软件简介<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p><strong>IntelliPaper</strong>（全称：Smart Literature Manager）是一款面向研究人员的跨平台桌面文献管理应用。它帮助用户组织、搜索、分析、标注和导出学术论文，并提供可选的AI辅助功能（摘要生成、关键词提取、RAG问答和对话式研究助手）。</p>
+</section>
+<section id="id2">
+<h3>1.2 设计动机<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>在学术研究过程中，研究人员经常面临以下痛点：</p>
+<ul class="simple">
+<li><p><strong>文献散落各处</strong>：PDF文件存放在不同文件夹，缺乏统一管理。</p></li>
+<li><p><strong>元数据录入繁琐</strong>：手动输入标题、作者、摘要等极为耗时。</p></li>
+<li><p><strong>检索困难</strong>：文件系统中无法对论文标题、摘要、全文进行模糊搜索。</p></li>
+<li><p><strong>引用管理复杂</strong>：不同投稿格式（BibTeX、RIS、APA、MLA、Chicago）切换麻烦。</p></li>
+<li><p><strong>AI赋能缺失</strong>：现有工具（如Zotero、Mendeley）缺乏与LLM的深度集成。</p></li>
+</ul>
+<p><strong>核心设计理念</strong>：<strong>&quot;一个桌面应用，解决文献管理全流程&quot;</strong>——从PDF导入→元数据自动提取→存储与索引→搜索与发现→笔记与标注→引用导出→AI分析，形成完整闭环。</p>
+</section>
+<section id="id3">
+<h3>1.3 架构决策<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>采用经典的<strong>三层架构</strong>，模块化分离关注点：</p>
+<p><code class="docutils literal notranslate"><span class="pre">┌──────────────────────────────────────────────────┐</span> <span class="pre">│</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">UI</span> <span class="pre">Layer</span> <span class="pre">(PyQt5)</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">│</span> <span class="pre">│</span>&#160; <span class="pre">MainWindow</span> <span class="pre">│</span> <span class="pre">Dashboard</span> <span class="pre">│</span> <span class="pre">PaperDetail</span> <span class="pre">│</span> <span class="pre">Chat</span>&#160;&#160;&#160;&#160; <span class="pre">│</span> <span class="pre">│</span>&#160; <span class="pre">ImportDialog</span> <span class="pre">│</span> <span class="pre">TagDialog</span> <span class="pre">│</span> <span class="pre">StatsDialog</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">│</span> <span class="pre">├──────────────────────────────────────────────────┤</span> <span class="pre">│</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">Business</span> <span class="pre">Logic</span> <span class="pre">Layer</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">│</span> <span class="pre">│</span>&#160; <span class="pre">SearchEngine</span> <span class="pre">│</span> <span class="pre">SemanticSearch</span> <span class="pre">│</span> <span class="pre">CitationExport</span>&#160; <span class="pre">│</span> <span class="pre">│</span>&#160; <span class="pre">PDFExtractor</span> <span class="pre">│</span> <span class="pre">CrossrefAPI</span> <span class="pre">│</span> <span class="pre">RAG_QA</span> <span class="pre">│</span> <span class="pre">HotFolder│</span> <span class="pre">│</span>&#160; <span class="pre">BatchImport</span> <span class="pre">│</span> <span class="pre">ExportManager</span> <span class="pre">│</span> <span class="pre">AIAssistant</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">│</span> <span class="pre">├──────────────────────────────────────────────────┤</span> <span class="pre">│</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">Data</span> <span class="pre">Layer</span> <span class="pre">(SQLite)</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">│</span> <span class="pre">│</span>&#160; <span class="pre">Models</span> <span class="pre">(Paper/Tag)</span> <span class="pre">│</span> <span class="pre">Database</span> <span class="pre">(CRUD/FullText)</span>&#160; <span class="pre">│</span> <span class="pre">└──────────────────────────────────────────────────┘</span></code></p>
+<p><strong>关键架构决策</strong>：</p>
+<p>| 决策 | 选择 | 理由 |
+|------|------|------|
+| GUI框架 | PyQt5 | 跨平台，原生外观，信号/槽异步机制 |
+| 数据库 | SQLite + WAL模式 | 零配置，单文件部署，WAL实现并发读，适合桌面应用 |
+| PDF引擎 | PyMuPDF (fitz) | 纯Python高速绑定，元数据+全文提取 |
+| AI接口 | 原生HTTP (urllib) | 无外部SDK依赖，支持DeepSeek/OpenAI/Ollama多模型 |
+| 搜索方案 | 双层混合搜索 | TF-IDF内置搜索 + 可选sentence-transformers语义搜索 |
+| 打包 | PyInstaller | 单文件.exe发布，用户无需安装Python |</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="ii">
+<h2>II. 技术栈<a class="headerlink" href="#ii" title="Permalink to this headline">¶</a></h2>
+<p>| 类别 | 技术 |
+|------|------|
+| <strong>编程语言</strong> | Python 3.9 |
+| <strong>GUI框架</strong> | PyQt5 5.15 |
+| <strong>PDF处理</strong> | PyMuPDF (fitz) |
+| <strong>数据库</strong> | SQLite3（WAL模式，迁移式schema演进） |
+| <strong>图像处理</strong> | Pillow 8.0 |
+| <strong>语义搜索</strong> | sentence-transformers（可选） |
+| <strong>AI模型支持</strong> | DeepSeek-V3 / DeepSeek-R1 / OpenAI GPT-4o / GPT-3.5-turbo / Ollama |
+| <strong>构建工具</strong> | PyInstaller 6.20 |
+| <strong>测试框架</strong> | pytest 8.4 |
+| <strong>操作系统</strong> | Windows 11（开发） / 跨平台（运行） |
+| <strong>CPU</strong> | AMD Ryzen 5 5600H |
+| <strong>AI开发伙伴</strong> | Codex CLI（基于OpenAI gpt-4o） |</p>
+</section>
+<hr class="docutils" />
+<section id="iii">
+<h2>III. 功能特性清单<a class="headerlink" href="#iii" title="Permalink to this headline">¶</a></h2>
+<section id="id4">
+<h3>核心功能<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>| 类别 | 功能 | 说明 |
+|------|------|------|
+| 📄 <strong>导入</strong> | PDF自动提取 | 导入PDF后自动识别标题、作者、摘要、DOI、年份、期刊 |
+| | 拖放导入 | 直接将PDF文件拖入论文列表 |
+| | BibTeX/RIS导入 | 批量导入.bib或.ris文件 |
+| | 热文件夹监控 | 后台线程实时监控指定目录，自动导入新PDF |
+| | 标题搜索导入 | 通过OpenAlex API按标题搜索论文元数据 |
+| 🔍 <strong>搜索</strong> | 全文搜索 | 标题/作者/摘要/笔记/DOI多字段联合搜索 |
+| | 关键词命中提升 | 标题匹配+5分，作者匹配+3分，提升相关性排名 |
+| | 上下文片段 | 搜索结果展示匹配词周围的上下文文本 |
+| | 语义搜索 | 可选sentence-transformers嵌入，支持&quot;相似论文推荐&quot; |
+| | 高级筛选 | 按标题/作者/年份范围/论文类型/标签/阅读状态筛选 |
+| 🏷️ <strong>组织</strong> | 标签管理 | 颜色标签，完整的CRUD管理 |
+| | 标签筛选 | 下拉菜单按标签筛选论文 |
+| | 可排序表格 | 点击表头按标题/作者/年份/期刊/添加日期排序 |
+| | 阅读状态 | 未读/待读/进行中/已读四种状态追踪 |
+| | 论文类型 | 期刊/会议/预印本/书籍/论文/其他分类 |
+| 📝 <strong>笔记</strong> | 每论文笔记 | 为任意论文添加自由文本笔记 |
+| | 自动保存 | 30秒无操作自动保存，切换论文时即时保存 |
+| | 笔记导出 | 以Markdown格式导出论文笔记 |
+| 📖 <strong>导出</strong> | BibTeX | 一键复制BibTeX引用到剪贴板 |
+| | RIS | RIS格式导出，兼容EndNote/Zotero |
+| | 多格式引用 | APA 7th / MLA 9th / Chicago格式 |
+| | 批量导出 | JSON批量导出/导入整个文库 |
+| 🤖 <strong>AI</strong> | 论文摘要 | 结构化摘要（背景/方法/结果/局限），自动填入UI |
+| | 关键词提取 | 提取5-8个研究关键词 |
+| | 标签建议 | 基于内容建议3-5个分类标签 |
+| | RAG问答 | 基于论文全文的检索增强生成问答 |
+| | 对话式助手 | 浮动聊天窗口，理解整个文库上下文 |
+| | 统计洞察 | AI对文库统计数据的智能解读 |
+| 🔐 <strong>备份</strong> | 数据库备份 | 时间戳命名的SQLite快照备份 |
+| | 数据库恢复 | 从任意备份文件安全恢复 |
+| | 完整归档 | 导出.zip格式（含数据库+PDF附件+缓存） |
+| 🖥️ <strong>UX</strong> | 明暗主题 | 一键切换亮色/暗色主题 |
+| | 键盘快捷键 | Ctrl+O/E/I/K/D/, 全套快捷键支持 |
+| | PDF查看 | 双击或Ctrl+D系统默认打开PDF |
+| | 启动闪屏 | 启动时优雅的品牌闪屏 |
+| | 全局异常钩子 | 所有未处理异常写入日志并友好提示 |
+| | 统计数据 | 年份分布/期刊排名/作者排名/标签云等可视化 |</p>
+</section>
+<section id="id5">
+<h3>奖励挑战完成情况<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>| 挑战 | 是否完成 | 说明 |
+|------|----------|------|
+| <strong>AI智能体集成（+3分）</strong> | ✅ | 浮动AI聊天窗口 + RAG问答对话框 + AI摘要/关键词/标签建议 + 统计AI解读。全异步QThread实现，绝不阻塞UI |
+| <strong>跨平台支持（+2分）</strong> | ✅ | PyQt5原生跨平台 + 纯Python无平台依赖 + 数据目录跨平台兼容策略 |</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="iv">
+<h2>IV. 开发日志<a class="headerlink" href="#iv" title="Permalink to this headline">¶</a></h2>
+<section id="id6">
+<h3>4.1 第一阶段：架构规划与数据模型<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>通过与Codex CLI的讨论，确定了以下核心设计：</p>
+<ul class="simple">
+<li><p><strong>三层架构</strong>：数据模型层（Paper/Tag/Relationship），业务逻辑层（CRUD/搜索/导出），UI层（PyQt5）</p></li>
+<li><p><strong>数据库</strong>：SQLite，零配置、单文件部署</p></li>
+<li><p><strong>数据模型</strong>：</p>
+<ul>
+<li><p>Paper：id, title, authors, abstract, year, journal, doi, file_path, notes, tags, reading_status, rating, paper_type等</p></li>
+<li><p>Tag：id, name, color</p></li>
+<li><p>paper_tags：多对多关联表</p></li>
+</ul>
+</li>
+<li><p><strong>Schema迁移</strong>：通过 	ry-except ALTER TABLE ADD COLUMN 实现v2→v3自动演进</p></li>
+</ul>
+<p><strong>AI贡献</strong>：</p>
+<ul class="simple">
+<li><p>Codex建议使用 &#64;dataclass 定义数据模型</p></li>
+<li><p>建议WAL模式提升并发读性能</p></li>
+<li><p>创建title/year/doi索引，fulltext_cache表缓存PDF文本</p></li>
+</ul>
+</section>
+<section id="pdf">
+<h3>4.2 第二阶段：PDF提取和搜索引擎<a class="headerlink" href="#pdf" title="Permalink to this headline">¶</a></h3>
+<p><strong>PDF提取策略</strong>：</p>
+<ol class="simple">
+<li><p>先读PDF元数据的title字段</p></li>
+<li><p>如果缺失，从正文前20行中筛选（长度&gt;20且&lt;300，排除章节标题关键词）</p></li>
+<li><p>DOI提取：正则 10.\d{4,}/[^\s,;)]+</p></li>
+<li><p>年份提取：匹配19xx-20xx范围</p></li>
+<li><p>性能限制：仅提取前50页</p></li>
+</ol>
+<p><strong>搜索引擎实现</strong>：</p>
+<ul class="simple">
+<li><p>搜索词拆分逐词匹配，标题匹配+5分，作者匹配+3分</p></li>
+<li><p>片段提取：定位首个匹配词，前后各取80字符上下文</p></li>
+<li><p>语义搜索：可选 ll-MiniLM-L6-v2，失败时自动降级TF-IDF</p></li>
+</ul>
+<p><strong>幻觉处理</strong>：</p>
+<p>| 问题 | AI最初建议 | 人工/迭代修正 |
+|------|-----------|--------------|
+| 搜索算法过于简单 | 线性累加匹配次数 | 增加标题/作者加权，防止常见词刷分 |
+| PDF提取regex复杂 | 一次性提取所有字段 | 拆分为独立函数，更好维护和测试 |</p>
+</section>
+<section id="id7">
+<h3>4.3 第三阶段：AI助手集成<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p><strong>多模型支持设计</strong>：</p>
+<p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">MODEL_PROVIDERS</span> <span class="pre">=</span> <span class="pre">{</span> <span class="pre">&quot;DeepSeek-V3&quot;:</span>&#160;&#160;&#160;&#160; <span class="pre">{&quot;base_url&quot;:</span> <span class="pre">&quot;https://api.deepseek.com/...&quot;,</span> <span class="pre">&quot;model&quot;:</span> <span class="pre">&quot;deepseek-chat&quot;},</span> <span class="pre">&quot;DeepSeek-R1&quot;:</span>&#160;&#160;&#160;&#160; <span class="pre">{&quot;base_url&quot;:</span> <span class="pre">&quot;https://api.deepseek.com/...&quot;,</span> <span class="pre">&quot;model&quot;:</span> <span class="pre">&quot;deepseek-reasoner&quot;},</span> <span class="pre">&quot;OpenAI</span> <span class="pre">GPT-4o&quot;:</span>&#160;&#160; <span class="pre">{&quot;base_url&quot;:</span> <span class="pre">&quot;https://api.openai.com/...&quot;,</span>&#160;&#160; <span class="pre">&quot;model&quot;:</span> <span class="pre">&quot;gpt-4o&quot;},</span> <span class="pre">&quot;OpenAI</span> <span class="pre">GPT-3.5&quot;:</span>&#160; <span class="pre">{&quot;base_url&quot;:</span> <span class="pre">&quot;https://api.openai.com/...&quot;,</span>&#160;&#160; <span class="pre">&quot;model&quot;:</span> <span class="pre">&quot;gpt-3.5-turbo&quot;},</span> <span class="pre">&quot;Ollama</span> <span class="pre">(Local)&quot;:</span>&#160; <span class="pre">{&quot;base_url&quot;:</span> <span class="pre">&quot;http://localhost:11434/...&quot;,</span>&#160;&#160; <span class="pre">&quot;model&quot;:</span> <span class="pre">&quot;llama3&quot;},</span> <span class="pre">}</span> </code></p>
+<p><strong>异步架构</strong>：API调用在QThread线程中执行，通过Qt信号（pyqtSignal）将结果传回主线程，彻底避免UI冻结。</p>
+<p><strong>关键Bug修复记录</strong>：</p>
+<p>| Bug | 表现 | 根因 | 修复 |
+|-----|------|------|------|
+| 导入路径错误 | PyInstaller打包后崩溃 | 相对导入在打包后失效 | 改为绝对导入 |
+| PyQt5枚举变更 | QTableView.SingleRow不存在 | PyQt5版本间API变更 | 改为 QAbstractItemView.SingleSelection |
+| f-string引号冲突 | 语法错误 | PowerShell生成文件时引号转义 | 手动修正引号嵌套 |
+| DeepSeek-R1参数 | API返回400 | R1不支持temperature参数 | 条件移除 temperature |
+| Ollama响应格式 | KeyError异常 | Ollama响应结构与OpenAI不同 | 增加分支处理 |</p>
+</section>
+<section id="ui">
+<h3>4.4 第四阶段：UI开发<a class="headerlink" href="#ui" title="Permalink to this headline">¶</a></h3>
+<p><strong>主窗口特色</strong>：</p>
+<ul class="simple">
+<li><p>QSplitter可调节左右分栏布局</p></li>
+<li><p>搜索框300ms去抖（QTimer），避免每次按键触发查询</p></li>
+<li><p>QTableView + QSortFilterProxyModel 排序</p></li>
+<li><p>自定义DragDropTableView支持PDF拖放导入</p></li>
+<li><p>明暗主题通过150行动态QSS样式表实现</p></li>
+</ul>
+<p><strong>浮动聊天窗口</strong>：</p>
+<ul class="simple">
+<li><p>始终置顶的浮动无边框窗口</p></li>
+<li><p>鼠标事件重写实现自由拖拽移动</p></li>
+<li><p>Ctrl+Enter发送消息，实时状态反馈</p></li>
+</ul>
+<p><strong>统计数据仪表盘</strong>：</p>
+<ul class="simple">
+<li><p>统计卡片：总计/未读/已读/进行中</p></li>
+<li><p>年份分布 + 期刊排名（Unicode条形图）</p></li>
+<li><p>标签云（HSL颜色动态缩放）</p></li>
+<li><p>AI统计解读按钮</p></li>
+</ul>
+</section>
+<section id="id8">
+<h3>4.5 第五阶段：测试与打包<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p><strong>测试覆盖（36个测试全部通过）</strong>：</p>
+<p>| 测试文件 | 数量 | 覆盖内容 |
+|----------|------|----------|
+| tests/test_models.py | 7 | Paper格式化、引用生成、默认值 |
+| tests/test_database.py | 18 | CRUD、搜索、全文、统计、标签、隔离临时DB |
+| tests/test_search_engine.py | 11 | 相关性评分、片段生成、BibTeX/RIS导出 |</p>
+<p><strong>打包成果</strong>：</p>
+<ul class="simple">
+<li><p><a class="reference external" href="./IntelliPaper.exe">IntelliPaper.exe（78.7 MB）</a> 单文件免安装可执行程序</p></li>
+<li><p>PyInstaller --onefile --windowed 模式</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="v">
+<h2>V. 关键问题与解决方案<a class="headerlink" href="#v" title="Permalink to this headline">¶</a></h2>
+<section id="id9">
+<h3>5.1 AI幻觉处理<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>| 场景 | AI幻觉表现 | 处理方式 |
+|------|-----------|----------|
+| PDF元数据提取 | AI建议使用多个第三方API | 采用本地PyMuPDF + 正则，无网络依赖更可靠 |
+| 搜索相关性 | AI建议BM25算法 | 使用轻量TF-IDF + 标题/作者加权，避免引入外部库 |
+| AI摘要格式 | AI返回非结构化文本 | 强制prompt模板：四段式结构 |
+| RAG问答 | AI编造文献内容 | 使用检索chunk作为上下文约束LLM生成 |</p>
+</section>
+<section id="id10">
+<h3>5.2 工程化挑战<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>| 挑战 | 解决方案 |
+|------|----------|
+| PyInstaller打包后模块找不到 | 使用 --hidden-import 显式声明，绝对导入 |
+| 数据库schema兼容 | try-except ALTER TABLE ADD COLUMN 自动迁移 |
+| 跨平台数据目录 | ~/.smart-lit-manager → %TEMP%/smart-lit-manager 带fallback |
+| UI响应性 | AI调用进QThread，搜索300ms去抖 |
+| 大PDF性能 | 仅提取前50页，控制全文缓存 |</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="vi">
+<h2>VI. 下载与使用<a class="headerlink" href="#vi" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>🌐 网页部署提示</strong>：将该 REPORT.md 与 <a class="reference external" href="./IntelliPaper.exe">IntelliPaper.exe</a> 和 <a class="reference external" href="./smart-lit-manager">smart-lit-manager</a> 源码文件夹放在同一目录上传至网页服务器或 GitHub 仓库，所有下载链接即可自动生效。您也可以直接<a class="reference external" href="./IntelliPaper.exe">打包下载所有文件</a>。</p>
+</div></blockquote>
+<section id="id11">
+<h3>方式1：预编译可执行文件（推荐，无需安装）<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p><strong>⬇️ <a class="reference external" href="./IntelliPaper.exe">下载 IntelliPaper.exe（78.7 MB）</a></strong></p>
+</div></blockquote>
+<p>直接双击运行，无需安装Python或任何第三方库。首次运行时会自动在 ~/.smart-lit-manager/ 创建数据库和配置文件。</p>
+</section>
+<section id="id12">
+<h3>方式2：从源码运行<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p><strong>📂 源码目录：<a class="reference external" href="./smart-lit-manager">smart-lit-manager</a></strong></p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">ash</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">PyQt5</span> <span class="pre">PyMuPDF</span> <span class="pre">Pillow</span> <span class="pre">sentence-transformers</span> <span class="pre">cd</span> <span class="pre">smart-lit-manager</span> <span class="pre">python</span> <span class="pre">main.py</span> </code></p>
+</section>
+<section id="id13">
+<h3>方式3：运行测试<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">ash</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pytest</span> <span class="pre">cd</span> <span class="pre">smart-lit-manager</span> <span class="pre">pytest</span> <span class="pre">tests/</span> <span class="pre">-v</span> </code></p>
+</section>
+<section id="id14">
+<h3>键盘快捷键<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<p>| 快捷键 | 功能 |
+|--------|------|
+| Ctrl+O | 导入论文 |
+| Ctrl+E | 导出JSON |
+| Ctrl+I | 导入JSON |
+| Ctrl+K | 设置API密钥 |
+| Ctrl+D | 打开PDF |
+| Ctrl+, | 偏好设置 |
+| Ctrl+Q | 退出 |</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="vii">
+<h2>VII. 项目结构<a class="headerlink" href="#vii" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">smart-lit-manager/</span> <span class="pre">├──</span> <span class="pre">main.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">入口：闪屏</span> <span class="pre">+</span> <span class="pre">全局异常钩子</span> <span class="pre">+</span> <span class="pre">高DPI支持</span> <span class="pre">├──</span> <span class="pre">app/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">后端/业务逻辑层</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">models.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">数据模型：Paper,</span> <span class="pre">Tag,</span> <span class="pre">SearchResult</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">database.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">SQLite</span> <span class="pre">ORM（CRUD/搜索/标签/统计/备份/恢复）</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">pdf_extractor.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">PDF元数据+全文提取（PyMuPDF）</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">search_engine.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">排名搜索</span> <span class="pre">+</span> <span class="pre">上下文片段</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">semantic_search.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">混合语义搜索（sentence-transformers/TF-IDF）</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">citation_export.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">引用导出：BibTeX,</span> <span class="pre">RIS,</span> <span class="pre">APA,</span> <span class="pre">MLA,</span> <span class="pre">Chicago</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">ai_assistant.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">AI助手：多模型</span> <span class="pre">+</span> <span class="pre">QThread异步</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">rag_qa.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">RAG问答：chunk分割+检索+LLM生成</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">batch_import.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">BibTeX/RIS文件解析</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">crossref_api.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">Crossref</span> <span class="pre">DOI</span> <span class="pre">+</span> <span class="pre">OpenAlex查询</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">hot_folder.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">热文件夹监控（后台线程）</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">export_manager.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">.zip完整归档（含PDF+DB+缓存）</span> <span class="pre">│</span>&#160;&#160; <span class="pre">└──</span> <span class="pre">logger.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">结构化日志</span> <span class="pre">+</span> <span class="pre">全局异常钩子</span> <span class="pre">├──</span> <span class="pre">ui/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">前端/GUI层（PyQt5）</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">main_window.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">主窗口（菜单/搜索/表格/拖放/设置）</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">paper_model.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">QAbstractTableModel（可排序）</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">paper_detail.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">详情面板（摘要/笔记/AI/引用/PDF）</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">import_dialog.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">导入对话框（含自动提取）</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">tag_dialog.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">标签管理（颜色选择器）</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">stats_dialog.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">统计仪表盘（图表/标签云/洞察）</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">dashboard_page.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">首页仪表盘（统计卡片+最近论文）</span> <span class="pre">│</span>&#160;&#160; <span class="pre">└──</span> <span class="pre">chat_window.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">浮动AI聊天窗口（始终置顶）</span> <span class="pre">├──</span> <span class="pre">tests/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">测试套件（36个全通过）</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">test_models.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">7</span> <span class="pre">tests</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">test_database.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">18</span> <span class="pre">tests</span> <span class="pre">│</span>&#160;&#160; <span class="pre">└──</span> <span class="pre">test_search_engine.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">11</span> <span class="pre">tests</span> <span class="pre">├──</span> <span class="pre">build_exe.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">PyInstaller构建脚本</span> <span class="pre">├──</span> <span class="pre">requirements.txt</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">依赖声明</span> <span class="pre">└──</span> <span class="pre">README.md</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">项目文档</span></code></p>
+</section>
+<hr class="docutils" />
+<section id="viii">
+<h2>VIII. 结论与展望<a class="headerlink" href="#viii" title="Permalink to this headline">¶</a></h2>
+<section id="id15">
+<h3>项目总结<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<p>IntelliPaper成功地将AI辅助开发从&quot;娱乐式提示&quot;推向了&quot;工程化结果&quot;。项目展示了一个完整的软件工程交付——从架构设计到代码实现、从测试覆盖到可执行打包，全程以LLM（Codex CLI）作为主要开发伙伴完成。</p>
+<p><strong>项目亮点</strong>：</p>
+<ul class="simple">
+<li><p>✅ <a class="reference external" href="./IntelliPaper.exe">IntelliPaper.exe（78.7 MB）</a> 独立可执行文件，零外部依赖</p></li>
+<li><p>✅ 36个全覆盖单元测试，全部通过</p></li>
+<li><p>✅ 5个AI模型切换支持（DeepSeek、OpenAI、Ollama）</p></li>
+<li><p>✅ RAG问答引擎 + 浮动AI聊天窗口</p></li>
+<li><p>✅ 跨平台运行（Windows/macOS/Linux）</p></li>
+<li><p>✅ 完整的文献管理全流程闭环</p></li>
+</ul>
+</section>
+<section id="id16">
+<h3>后续可能扩展<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Web服务版本</strong>：Flask/FastAPI后端 + React前端</p></li>
+<li><p><strong>同步服务</strong>：WebDAV/Nextcloud多设备同步</p></li>
+<li><p><strong>浏览器扩展</strong>：自动捕获论文元数据</p></li>
+<li><p><strong>引用网络图</strong>：论文引用关系可视化</p></li>
+<li><p><strong>更多AI能力</strong>：论文翻译、研究方法建议、审稿意见生成</p></li>
+</ul>
+<hr class="docutils" />
+<p><em>报告生成日期：2026年6月15日</em>
+<em>工具：Codex CLI（基于OpenAI gpt-4o）</em>
+<em>开发环境：Windows 11 / Python 3.9 / PyQt5 / SQLite3</em></p>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">sunan-qin</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="assignment2.html">My web site</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment1.html">Assignment1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment2_.html">静态个人博客网站搭建与部署报告</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment3.html">Assignment 3</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">IntelliPaper — 智能文献管理工具</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ai">AI辅助开发报告</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#i">I. 背景与设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ii">II. 技术栈</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#iii">III. 功能特性清单</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#iv">IV. 开发日志</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#v">V. 关键问题与解决方案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vi">VI. 下载与使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vii">VII. 项目结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#viii">VIII. 结论与展望</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="assignment3.html" title="previous chapter">Assignment 3</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2026, qin sunan.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/assignment4.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

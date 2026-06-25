@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+
+<html lang="english">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Assignment 3 &#8212; sunan-qin 1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="IntelliPaper — 智能文献管理工具" href="assignment4.html" />
+    <link rel="prev" title="静态个人博客网站搭建与部署报告" href="assignment2_.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="assignment-3">
+<h1>Assignment 3<a class="headerlink" href="#assignment-3" title="Permalink to this headline">¶</a></h1>
+<section id="online-agent">
+<h2>一、Online Agent<a class="headerlink" href="#online-agent" title="Permalink to this headline">¶</a></h2>
+<section id="id1">
+<h3>1. 使用平台<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Dify</p>
+</section>
+<section id="api">
+<h3>2. 使用的API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h3>
+<p>Qwen（阿里云通义千问）</p>
+</section>
+<section id="id2">
+<h3>3. 实现功能<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>创建一个能够分析文件的Agent，回答关于文件内容的特定问题。</p>
+</section>
+<section id="id3">
+<h3>4. 步骤<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<section id="dify">
+<h4>(1) 部署Dify<a class="headerlink" href="#dify" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>下载并安装 Docker</p></li>
+<li><p>使用 Docker 部署 Dify<br /><a class="reference external" href="https://imgchr.com/i/pmFWisU"><img alt="pmFWisU.png" src="https://s41.ax1x.com/2026/05/29/pmFWisU.png" /></a></p></li>
+</ul>
+</section>
+<section id="ollama-api">
+<h4>(2) 安装Ollama并下载模型（用于本地备用，也可仅用在线API）<a class="headerlink" href="#ollama-api" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>下载 Ollama</p></li>
+<li><p>在 Ollama 中下载 qwen2:7b 模型<br /><a class="reference external" href="https://imgchr.com/i/pmFWmJ1"><img alt="pmFWmJ1.png" src="https://s41.ax1x.com/2026/05/29/pmFWmJ1.png" /></a></p></li>
+</ul>
+</section>
+<section id="difyagent">
+<h4>(3) 在Dify中创建Agent<a class="headerlink" href="#difyagent" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>选择“在线模型” → 添加 Qwen API（需申请阿里云API Key）</p></li>
+<li><p>创建“旅行助手”：</p></li>
+<li><p><a class="reference external" href="https://imgchr.com/i/pmFWeiR"><img alt="pmFWeiR.png" src="https://s41.ax1x.com/2026/05/29/pmFWeiR.png" /></a></p></li>
+</ul>
+</section>
+<section id="id4">
+<h4>(4) 结果展示<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<p><a class="reference external" href="https://imgchr.com/i/pmFWVo9"><img alt="pmFWVo9.png" src="https://s41.ax1x.com/2026/05/29/pmFWVo9.png" /></a></p>
+</section>
+</section>
+</section>
+<section id="local-model-deployment">
+<h2>二、Local Model Deployment<a class="headerlink" href="#local-model-deployment" title="Permalink to this headline">¶</a></h2>
+<section id="id5">
+<h3>1. 部署方式<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>使用 Ollama 部署本地模型，已在第一部分中的安装完毕不在此赘述</p>
+</section>
+<section id="id6">
+<h3>2. 部署的模型<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>qwen2:7b</p>
+</section>
+<section id="id7">
+<h3>3. 交互演示<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>在终端中运行：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ollama run qwen2:7b
+</pre></div>
+</div>
+<p>输入问题：</p>
+<blockquote>
+<div><p>“你是谁”</p>
+</div></blockquote>
+<p>模型输出：</p>
+<blockquote>
+<div><p>我是Qwen，由阿里云开发的大语言模型。</p>
+</div></blockquote>
+</section>
+<section id="id8">
+<h3>4. 结果展示<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://imgchr.com/i/pmFWEdJ"><img alt="pmFWEdJ.png" src="https://s41.ax1x.com/2026/05/29/pmFWEdJ.png" /></a></p>
+</section>
+</section>
+<section id="ide-integration">
+<h2>三、IDE Integration<a class="headerlink" href="#ide-integration" title="Permalink to this headline">¶</a></h2>
+<section id="id9">
+<h3>1. 环境<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>VSCode</p></li>
+<li><p>插件：Continue（已配置连接到 DeepSeek API）</p></li>
+</ul>
+</section>
+<section id="ai">
+<h3>2. 任务：AI帮助解释并重构代码<a class="headerlink" href="#ai" title="Permalink to this headline">¶</a></h3>
+<section id="id10">
+<h4>原始代码<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_average</span><span class="p">(</span><span class="n">grades</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;计算学生成绩的平均分&quot;&quot;&quot;</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">grade</span> <span class="ow">in</span> <span class="n">grades</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">grade</span>
+    <span class="n">average</span> <span class="o">=</span> <span class="n">total</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">grades</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">average</span>
+
+<span class="k">def</span> <span class="nf">get_letter_grade</span><span class="p">(</span><span class="n">score</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;A&quot;</span>
+    <span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">80</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;B&quot;</span>
+    <span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">70</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;C&quot;</span>
+    <span class="k">elif</span> <span class="n">score</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;D&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;F&quot;</span>
+
+<span class="k">def</span> <span class="nf">process_students</span><span class="p">(</span><span class="n">students</span><span class="p">):</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">student</span> <span class="ow">in</span> <span class="n">students</span><span class="p">:</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">student</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+        <span class="n">scores</span> <span class="o">=</span> <span class="n">student</span><span class="p">[</span><span class="s1">&#39;scores&#39;</span><span class="p">]</span>
+        <span class="n">avg</span> <span class="o">=</span> <span class="n">calculate_average</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>  <span class="c1"># 潜在错误：scores 可能为空列表</span>
+        <span class="n">grade</span> <span class="o">=</span> <span class="n">get_letter_grade</span><span class="p">(</span><span class="n">avg</span><span class="p">)</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">avg</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">grade</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">results</span>
+
+<span class="c1"># 测试数据</span>
+<span class="n">class_data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;scores&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">85</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">88</span><span class="p">]},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;scores&quot;</span><span class="p">:</span> <span class="p">[]},</span>          <span class="c1"># 空成绩列表 → 除零错误</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Charlie&quot;</span><span class="p">,</span> <span class="s2">&quot;scores&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">70</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">75</span><span class="p">]},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Diana&quot;</span><span class="p">,</span> <span class="s2">&quot;scores&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">95</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">92</span><span class="p">]},</span>  <span class="c1"># None 值 → 类型错误</span>
+<span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">process_students</span><span class="p">(</span><span class="n">class_data</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://imgchr.com/i/pmFWuz6"><img alt="pmFWuz6.png" src="https://s41.ax1x.com/2026/05/29/pmFWuz6.png" /></a></p>
+</section>
+<section id="continue-deepseek">
+<h4>使用 Continue + DeepSeek 进行重构<a class="headerlink" href="#continue-deepseek" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="id11">
+<h4>运行结果<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+<p><a class="reference external" href="https://imgchr.com/i/pmFWnRx"><img alt="pmFWnRx.png" src="https://s41.ax1x.com/2026/05/29/pmFWnRx.png" /></a></p>
+</section>
+</section>
+</section>
+<section id="documentation-reflection">
+<h2>四、Documentation &amp; Reflection<a class="headerlink" href="#documentation-reflection" title="Permalink to this headline">¶</a></h2>
+<section id="id12">
+<h3>1. 遇到的挑战与解决方案<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<p>| 挑战 | 解决方案 |
+|------|----------|
+| Dify 部署时 Docker 端口冲突 | 修改 docker-compose.yml 中的端口映射，使用 <code class="docutils literal notranslate"><span class="pre">8080:80</span></code> |
+| Qwen API 申请后调用失败 | 检查阿里云 DashScope 的 API Key 权限，添加 <code class="docutils literal notranslate"><span class="pre">qwen-turbo</span></code> 模型访问 |
+| Ollama 下载模型速度慢 | 使用国内镜像或手动下载模型文件到 <code class="docutils literal notranslate"><span class="pre">~/.ollama/models</span></code> |
+| Continue 插件连接 DeepSeek 需要 API 代理 | 设置 VSCode 的 HTTP 代理环境变量 |</p>
+</section>
+<section id="vs">
+<h3>2. 在线模型 vs 本地模型 对比<a class="headerlink" href="#vs" title="Permalink to this headline">¶</a></h3>
+<p>| 维度 | 在线模型 (Qwen API) | 本地模型 (Ollama + qwen2:7b) |
+|------|---------------------|-------------------------------|
+| <strong>性能</strong> | 响应快（&lt;2s），可并行多请求 | 较慢（5-15s），GPU占用高 |
+| <strong>易用性</strong> | 仅需API Key，无需硬件配置 | 需安装Ollama、下载大文件，需GPU支持 |
+| <strong>实用性</strong> | 适合文档分析、联网搜索等复杂任务 | 适合代码补全、离线开发环境 |
+| <strong>成本</strong> | 按token计费（低量免费） | 免费（但需自备硬件） |
+| <strong>数据隐私</strong> | 数据上传至第三方 | 数据完全本地，适合敏感代码 |</p>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">sunan-qin</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="assignment2.html">My web site</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment1.html">Assignment1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment2_.html">静态个人博客网站搭建与部署报告</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Assignment 3</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#online-agent">一、Online Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#local-model-deployment">二、Local Model Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ide-integration">三、IDE Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-reflection">四、Documentation &amp; Reflection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="assignment4.html">IntelliPaper — 智能文献管理工具</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="assignment2_.html" title="previous chapter">静态个人博客网站搭建与部署报告</a></li>
+      <li>Next: <a href="assignment4.html" title="next chapter">IntelliPaper — 智能文献管理工具</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2026, qin sunan.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/assignment3.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

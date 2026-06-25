@@ -20,6 +20,9 @@ Welcome to sunan-qin's documentation!
    features.md
    assignment2.md
    assignment1.md
+   assignment2_.md
+   assignment3.md
+   assignment4.md
 
 Indices and tables
 ==================
