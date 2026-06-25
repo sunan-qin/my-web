@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+
+<html lang="english">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Smart Literature Manager &#8212; sunan-qin 1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="smart-literature-manager">
+<h1>Smart Literature Manager<a class="headerlink" href="#smart-literature-manager" title="Permalink to this headline">¶</a></h1>
+<p><strong>An AI-Assisted Academic Paper Management Tool</strong></p>
+<p>A desktop application for researchers to organize, search, analyze, and export academic papers. Built with Python, PyQt5, and PyMuPDF. Features optional AI-powered paper summarization via OpenAI.</p>
+<hr class="docutils" />
+<section id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<p>| Category | Feature | Description |
+|----------|---------|-------------|
+| <strong>📄 Import</strong> | PDF Auto-Extraction | Import PDFs → auto-extract title, authors, abstract, DOI, year, journal |
+| | Drag &amp; Drop | Drag PDF files directly onto the paper table to import |
+| | Quick Import | Skip the dialog by dropping files or using batch JSON import |
+| <strong>🏷️ Organize</strong> | Tags | Color-coded tags with full CRUD management |
+| | Tag Filter | Filter papers by any tag from the dropdown |
+| | Sortable Table | Click column headers to sort by title, author, year, journal, or date |
+| <strong>🔍 Search</strong> | Full-Text Search | Search titles, authors, abstracts, notes, and cached PDF text |
+| | Debounced Search | 300ms debounce for smooth real-time searching |
+| | Relevance Scoring | Title and author matches are boosted for better results |
+| | Context Snippets | Search results show context around matching terms |
+| <strong>📝 Notes</strong> | Per-Paper Notes | Add and auto-save personal notes to any paper |
+| | Auto-Save | Notes are saved when switching papers or saving changes |
+| <strong>📖 Export</strong> | BibTeX | One-click BibTeX citation export to clipboard |
+| | RIS | RIS format export for reference managers |
+| | JSON | Batch export/import all papers as JSON |
+| <strong>🔐 Backup</strong> | Database Backup | Create timestamped backups of your entire library |
+| | Database Restore | Restore from any backup file with safety confirmation |
+| <strong>🤖 AI</strong> | Paper Summaries | Generate research summaries via OpenAI API (optional) |
+| | Keyword Extraction | Extract key research terms from papers |
+| | Tag Suggestions | AI-suggested tags based on paper content |
+| <strong>🖥️ UX</strong> | Keyboard Shortcuts | Ctrl+O (import), Ctrl+E (export), Ctrl+I (import JSON), Ctrl+K (API key), Ctrl+D (open PDF), Ctrl+, (settings) |
+| | PDF Viewer | Double-click or press Ctrl+D to open PDFs in system viewer |
+| | Preferences | Settings dialog for API key configuration |
+| | Exit Confirmation | Safety dialog when closing with papers loaded |
+| | Statistics Dashboard | View paper counts by year, with/without abstracts, tag counts |
+| | Error Handling | Structured logging + global exception hooks + user-friendly error messages |</p>
+</section>
+<section id="quick-start">
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h2>
+<section id="option-1-pre-built-executable-recommended">
+<h3>Option 1: Pre-built Executable (Recommended)<a class="headerlink" href="#option-1-pre-built-executable-recommended" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p>Download <strong>SmartLitManager.exe</strong> (74.7 MB, standalone, no Python needed)</p></li>
+<li><p>Double-click to run</p></li>
+<li><p>Click <strong>File → Import Paper</strong> (or press <strong>Ctrl+O</strong>) to add your first PDF</p></li>
+</ol>
+</section>
+<section id="option-2-run-from-source">
+<h3>Option 2: Run from Source<a class="headerlink" href="#option-2-run-from-source" title="Permalink to this headline">¶</a></h3>
+<p>`ash</p>
+</section>
+</section>
+</section>
+<section id="requirements-python-3-7-pyqt5-pymupdf-pillow">
+<h1>Requirements: Python 3.7+, PyQt5, PyMuPDF, Pillow<a class="headerlink" href="#requirements-python-3-7-pyqt5-pymupdf-pillow" title="Permalink to this headline">¶</a></h1>
+<p>pip install PyQt5 PyMuPDF Pillow</p>
+</section>
+<section id="launch">
+<h1>Launch<a class="headerlink" href="#launch" title="Permalink to this headline">¶</a></h1>
+<p>cd smart-lit-manager
+python main.py
+`</p>
+<section id="option-3-run-tests">
+<h2>Option 3: Run Tests<a class="headerlink" href="#option-3-run-tests" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">ash</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pytest</span> <span class="pre">cd</span> <span class="pre">smart-lit-manager</span> <span class="pre">python</span> <span class="pre">-m</span> <span class="pre">pytest</span> <span class="pre">tests/</span> <span class="pre">-v</span>&#160;&#160; <span class="pre">#</span> <span class="pre">36</span> <span class="pre">tests</span> <span class="pre">covering</span> <span class="pre">models,</span> <span class="pre">database,</span> <span class="pre">search,</span> <span class="pre">citations</span> </code></p>
+</section>
+<section id="usage-guide">
+<h2>Usage Guide<a class="headerlink" href="#usage-guide" title="Permalink to this headline">¶</a></h2>
+<section id="basic-workflow">
+<h3>Basic Workflow<a class="headerlink" href="#basic-workflow" title="Permalink to this headline">¶</a></h3>
+<ol class="simple">
+<li><p><strong>Import Papers</strong> — File → Import Paper (or drag PDF files onto the paper list)</p></li>
+<li><p><strong>Auto-Extract</strong> — Click &quot;Auto-Extract Metadata from PDF&quot; to fill in paper details</p></li>
+<li><p><strong>Tag &amp; Categorize</strong> — Add comma-separated tags during import or later</p></li>
+<li><p><strong>Search &amp; Browse</strong> — Type in the search bar or filter by tag</p></li>
+<li><p><strong>Take Notes</strong> — Add notes in the detail panel (auto-saved)</p></li>
+<li><p><strong>Export Citations</strong> — Click &quot;Export BibTeX&quot; or &quot;Export RIS&quot;</p></li>
+<li><p><strong>AI Summary</strong> — Set your OpenAI API key in Tools → Preferences, then click &quot;AI Summary&quot;</p></li>
+</ol>
+</section>
+<section id="keyboard-shortcuts">
+<h3>Keyboard Shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Permalink to this headline">¶</a></h3>
+<p>| Shortcut | Action |
+|----------|--------|
+| Ctrl+O | Import Paper |
+| Ctrl+E | Export Papers as JSON |
+| Ctrl+I | Import Papers from JSON |
+| Ctrl+K | Set OpenAI API Key |
+| Ctrl+D | Open PDF (selected paper) |
+| Ctrl+, | Preferences |
+| Ctrl+Q | Exit |</p>
+</section>
+<section id="backup-restore">
+<h3>Backup &amp; Restore<a class="headerlink" href="#backup-restore" title="Permalink to this headline">¶</a></h3>
+<p>Your library is automatically stored at ~/.smart-lit-manager/library.db. Use:</p>
+<ul class="simple">
+<li><p><strong>File → Backup Database</strong> to create a timestamped backup</p></li>
+<li><p><strong>File → Restore Database</strong> to restore from a previous backup</p></li>
+</ul>
+<p>You can also export/import all paper metadata as JSON for portability.</p>
+</section>
+</section>
+<section id="project-architecture">
+<h2>Project Architecture<a class="headerlink" href="#project-architecture" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">smart-lit-manager/</span> <span class="pre">├──</span> <span class="pre">main.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">Entry</span> <span class="pre">point</span> <span class="pre">with</span> <span class="pre">splash</span> <span class="pre">+</span> <span class="pre">exception</span> <span class="pre">hook</span> <span class="pre">├──</span> <span class="pre">app/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">Backend</span> <span class="pre">/</span> <span class="pre">Business</span> <span class="pre">logic</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">models.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">Data</span> <span class="pre">models:</span> <span class="pre">Paper,</span> <span class="pre">Tag,</span> <span class="pre">SearchResult</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">database.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">SQLite</span> <span class="pre">ORM</span> <span class="pre">with</span> <span class="pre">full</span> <span class="pre">CRUD,</span> <span class="pre">search,</span> <span class="pre">stats,</span> <span class="pre">backup/restore</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">pdf_extractor.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">PDF</span> <span class="pre">metadata</span> <span class="pre">extraction</span> <span class="pre">via</span> <span class="pre">PyMuPDF</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">citation_export.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">BibTeX</span> <span class="pre">+</span> <span class="pre">RIS</span> <span class="pre">format</span> <span class="pre">generators</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">search_engine.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">Ranked</span> <span class="pre">search</span> <span class="pre">with</span> <span class="pre">context</span> <span class="pre">snippets</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">ai_assistant.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">OpenAI</span> <span class="pre">API</span> <span class="pre">client</span> <span class="pre">for</span> <span class="pre">summaries</span> <span class="pre">│</span>&#160;&#160; <span class="pre">└──</span> <span class="pre">logger.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">Structured</span> <span class="pre">logging</span> <span class="pre">+</span> <span class="pre">global</span> <span class="pre">exception</span> <span class="pre">hook</span> <span class="pre">├──</span> <span class="pre">ui/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">Frontend</span> <span class="pre">/</span> <span class="pre">GUI</span> <span class="pre">(PyQt5)</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">main_window.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">Main</span> <span class="pre">window:</span> <span class="pre">menus,</span> <span class="pre">toolbar,</span> <span class="pre">drag-drop,</span> <span class="pre">search,</span> <span class="pre">settings</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">paper_model.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">QAbstractTableModel</span> <span class="pre">for</span> <span class="pre">sortable</span> <span class="pre">paper</span> <span class="pre">table</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">paper_detail.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">Detail</span> <span class="pre">panel:</span> <span class="pre">abstract,</span> <span class="pre">notes,</span> <span class="pre">AI</span> <span class="pre">summary,</span> <span class="pre">PDF</span> <span class="pre">open</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">import_dialog.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">PDF</span> <span class="pre">import</span> <span class="pre">dialog</span> <span class="pre">with</span> <span class="pre">auto-extraction</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">tag_dialog.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">Tag</span> <span class="pre">CRUD</span> <span class="pre">with</span> <span class="pre">color</span> <span class="pre">picker</span> <span class="pre">│</span>&#160;&#160; <span class="pre">└──</span> <span class="pre">stats_dialog.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">Library</span> <span class="pre">statistics</span> <span class="pre">dashboard</span> <span class="pre">├──</span> <span class="pre">tests/</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">Test</span> <span class="pre">suite</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">test_models.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">Paper,</span> <span class="pre">Tag,</span> <span class="pre">SearchResult</span> <span class="pre">tests</span> <span class="pre">(7</span> <span class="pre">tests)</span> <span class="pre">│</span>&#160;&#160; <span class="pre">├──</span> <span class="pre">test_database.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">Full</span> <span class="pre">CRUD,</span> <span class="pre">search,</span> <span class="pre">fulltext,</span> <span class="pre">stats,</span> <span class="pre">tags</span> <span class="pre">tests</span> <span class="pre">(18</span> <span class="pre">tests)</span> <span class="pre">│</span>&#160;&#160; <span class="pre">└──</span> <span class="pre">test_search_engine.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">Search</span> <span class="pre">+</span> <span class="pre">citation</span> <span class="pre">export</span> <span class="pre">tests</span> <span class="pre">(11</span> <span class="pre">tests)</span> <span class="pre">├──</span> <span class="pre">requirements.txt</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">Python</span> <span class="pre">dependencies</span> <span class="pre">├──</span> <span class="pre">build_exe.py</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">PyInstaller</span> <span class="pre">build</span> <span class="pre">script</span> <span class="pre">└──</span> <span class="pre">README.md</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">#</span> <span class="pre">This</span> <span class="pre">file</span></code></p>
+</section>
+<section id="test-coverage">
+<h2>Test Coverage<a class="headerlink" href="#test-coverage" title="Permalink to this headline">¶</a></h2>
+<p>36 unit tests in 3 test files — all passing:</p>
+<ul class="simple">
+<li><p>**	ests/test_models.py** — Paper formatting, citation generation, default values</p></li>
+<li><p>**	ests/test_database.py** — CRUD operations, search, fulltext, statistics, tags (with isolated temp DB per test)</p></li>
+<li><p>**	ests/test_search_engine.py** — Relevance scoring, snippet generation, BibTeX/RIS export</p></li>
+</ul>
+<p>Run with: python -m pytest tests/ -v</p>
+</section>
+<section id="technology-stack">
+<h2>Technology Stack<a class="headerlink" href="#technology-stack" title="Permalink to this headline">¶</a></h2>
+<p>| Component | Technology |
+|-----------|-----------|
+| Language | Python 3.9 |
+| GUI Framework | PyQt5 |
+| PDF Processing | PyMuPDF (fitz) v1.26.5 |
+| Database | SQLite3 (WAL mode) |
+| Image Processing | Pillow |
+| AI Integration | OpenAI API (optional, gpt-3.5-turbo) |
+| Packaging | PyInstaller v6.20 |
+| Testing | pytest |</p>
+</section>
+<section id="how-ai-codex-cli-helped-build-this">
+<h2>How AI (Codex CLI) Helped Build This<a class="headerlink" href="#how-ai-codex-cli-helped-build-this" title="Permalink to this headline">¶</a></h2>
+<p>This project was developed with <strong>Codex CLI</strong> as the primary development partner. Key contributions:</p>
+<section id="architecture-planning">
+<h3>Architecture &amp; Planning<a class="headerlink" href="#architecture-planning" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Proposed the modular 3-layer architecture (data models → business logic → GUI)</p></li>
+<li><p>Recommended SQLite with WAL mode, PyQt5 for cross-platform GUI, and PyMuPDF for PDF processing</p></li>
+<li><p>Designed the normalized database schema with proper foreign keys and indexes</p></li>
+</ul>
+</section>
+<section id="database-layer">
+<h3>Database Layer<a class="headerlink" href="#database-layer" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Implemented full SQLite ORM with CRUD, full-text search, tag management, and statistics</p></li>
+<li><p>Added backup/restore, JSON export/import functions</p></li>
+<li><p>Fixed SQL syntax issues and path-variable scoping during test setup</p></li>
+</ul>
+</section>
+<section id="pdf-extraction">
+<h3>PDF Extraction<a class="headerlink" href="#pdf-extraction" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Built regex patterns for DOI, year, abstract, and journal extraction</p></li>
+<li><p>Added is_pdf() validator and graceful error handling for corrupt files</p></li>
+<li><p>Chose page-limited extraction (first 50 pages) for performance</p></li>
+</ul>
+</section>
+<section id="search-engine">
+<h3>Search Engine<a class="headerlink" href="#search-engine" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Implemented relevance scoring with title/author boosting</p></li>
+<li><p>Built context-aware snippet extraction around the first matching term</p></li>
+<li><p>Achieved 7/7 search tests passing</p></li>
+</ul>
+</section>
+<section id="gui-development">
+<h3>GUI Development<a class="headerlink" href="#gui-development" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Built complete PyQt5 interface: sortable table, split-pane layout, debounced search (300ms)</p></li>
+<li><p>Added drag-drop PDF import, double-click PDF open, and keyboard shortcuts (Ctrl+O/E/I/K/D/,)</p></li>
+<li><p>Implemented settings dialog with API key configuration</p></li>
+<li><p>Added database backup/restore dialogs with safety confirmations</p></li>
+<li><p>Added splash screen and global exception hook for startup robustness</p></li>
+</ul>
+</section>
+<section id="bug-fixes-packaging">
+<h3>Bug Fixes &amp; Packaging<a class="headerlink" href="#bug-fixes-packaging" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Fixed relative import issue (rom ..app → rom app) for PyInstaller compatibility</p></li>
+<li><p>Fixed PyQt5 enum error (QTableView.SingleRow → QAbstractItemView.SingleSelection)</p></li>
+<li><p>Fixed f-string quote escaping in PowerShell-generated source files</p></li>
+<li><p>Configured PyInstaller with correct hidden imports for 74.7 MB standalone .exe</p></li>
+</ul>
+</section>
+<section id="testing">
+<h3>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Wrote 36 unit tests covering all backend modules</p></li>
+<li><p>Used temp-directory DB isolation for database tests</p></li>
+<li><p>All tests pass with pytest</p></li>
+</ul>
+</section>
+</section>
+<section id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
+<p>Academic project — developed as an exercise in AI-assisted software engineering.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">sunan-qin</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../assignment2.html">My web site</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignment1.html">Assignment1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignment2_.html">静态个人博客网站搭建与部署报告</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignment3.html">Assignment 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignment4.html">IntelliPaper — 智能文献管理工具</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2026, qin sunan.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/smart-lit-manager/README.md.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
