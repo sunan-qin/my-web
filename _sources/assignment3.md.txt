@@ -1,72 +1,72 @@
+﻿# Assignment 3
 
-# Assignment 3
+## I. Online Agent
 
-## 一、Online Agent 
-
-### 1. 使用平台
+### 1. Platform Used
 Dify
 
-### 2. 使用的API
-Qwen（阿里云通义千问）
+### 2. API Used
+Qwen (Alibaba Cloud Tongyi Qianwen)
 
-### 3. 实现功能
-创建一个能够分析文件的Agent，回答关于文件内容的特定问题。
+### 3. Implemented Features
+Create an Agent capable of analyzing files and answering specific questions about file content.
 
-### 4. 步骤
+### 4. Steps
 
-#### (1) 部署Dify
-- 下载并安装 Docker
-- 使用 Docker 部署 Dify  
+#### (1) Deploy Dify
+- Download and install Docker
+- Deploy Dify using Docker
 [![pmFWisU.png](https://s41.ax1x.com/2026/05/29/pmFWisU.png)](https://imgchr.com/i/pmFWisU)
 
-#### (2) 安装Ollama并下载模型（用于本地备用，也可仅用在线API）
-- 下载 Ollama  
-- 在 Ollama 中下载 qwen2:7b 模型  
+#### (2) Install Ollama and Download Models (for local backup, or use only online API)
+- Download Ollama
+- Download the qwen2:7b model in Ollama
 [![pmFWmJ1.png](https://s41.ax1x.com/2026/05/29/pmFWmJ1.png)](https://imgchr.com/i/pmFWmJ1)
 
-#### (3) 在Dify中创建Agent
-- 选择“在线模型” → 添加 Qwen API（需申请阿里云API Key）
-- 创建“旅行助手”：
+#### (3) Create an Agent in Dify
+- Select "Online Model" → Add Qwen API (requires applying for an Alibaba Cloud API Key)
+- Create "Travel Assistant":
 - [![pmFWeiR.png](https://s41.ax1x.com/2026/05/29/pmFWeiR.png)](https://imgchr.com/i/pmFWeiR)
 
-#### (4) 结果展示
+#### (4) Results
 [![pmFWVo9.png](https://s41.ax1x.com/2026/05/29/pmFWVo9.png)](https://imgchr.com/i/pmFWVo9)
-## 二、Local Model Deployment 
 
-### 1. 部署方式
-使用 Ollama 部署本地模型，已在第一部分中的安装完毕不在此赘述
+## II. Local Model Deployment
 
-### 2. 部署的模型
+### 1. Deployment Method
+Use Ollama to deploy a local model. Installation was already completed in the first section and will not be repeated here.
+
+### 2. Deployed Model
 qwen2:7b
 
-### 3. 交互演示
+### 3. Interaction Demo
 
-在终端中运行：
+Run in the terminal:
 ```bash
 ollama run qwen2:7b
 ```
 
-输入问题：
-> “你是谁”
+Enter a question:
+> "Who are you"
 
-模型输出：
-> 我是Qwen，由阿里云开发的大语言模型。
+Model output:
+> I am Qwen, a large language model developed by Alibaba Cloud.
 
-### 4. 结果展示  
+### 4. Results
 [![pmFWEdJ.png](https://s41.ax1x.com/2026/05/29/pmFWEdJ.png)](https://imgchr.com/i/pmFWEdJ)
 
-## 三、IDE Integration 
+## III. IDE Integration
 
-### 1. 环境
+### 1. Environment
 - VSCode
-- 插件：Continue（已配置连接到 DeepSeek API）
+- Plugin: Continue (configured to connect to DeepSeek API)
 
-### 2. 任务：AI帮助解释并重构代码
+### 2. Task: AI Helps Explain and Refactor Code
 
-#### 原始代码
+#### Original Code
 ```python
 def calculate_average(grades):
-    """计算学生成绩的平均分"""
+    """Calculate the average score of student grades"""
     total = 0
     for grade in grades:
         total += grade
@@ -90,45 +90,43 @@ def process_students(students):
     for student in students:
         name = student['name']
         scores = student['scores']
-        avg = calculate_average(scores)  # 潜在错误：scores 可能为空列表
+        avg = calculate_average(scores)  # Potential error: scores may be an empty list
         grade = get_letter_grade(avg)
         results.append(f"{name}: {avg} ({grade})")
     return results
 
-# 测试数据
+# Test data
 class_data = [
     {"name": "Alice", "scores": [85, 90, 88]},
-    {"name": "Bob", "scores": []},          # 空成绩列表 → 除零错误
+    {"name": "Bob", "scores": []},          # Empty scores list → division by zero error
     {"name": "Charlie", "scores": [70, 65, 75]},
-    {"name": "Diana", "scores": [95, None, 92]},  # None 值 → 类型错误
+    {"name": "Diana", "scores": [95, None, 92]},  # None value → type error
 ]
 
 print(process_students(class_data))
 ```
 [![pmFWuz6.png](https://s41.ax1x.com/2026/05/29/pmFWuz6.png)](https://imgchr.com/i/pmFWuz6)
-#### 使用 Continue + DeepSeek 进行重构
-#### 运行结果  
+#### Refactoring with Continue + DeepSeek
+#### Results
 [![pmFWnRx.png](https://s41.ax1x.com/2026/05/29/pmFWnRx.png)](https://imgchr.com/i/pmFWnRx)
 
-## 四、Documentation & Reflection 
+## IV. Documentation & Reflection
 
-### 1. 遇到的挑战与解决方案
+### 1. Challenges and Solutions
 
-| 挑战 | 解决方案 |
-|------|----------|
-| Dify 部署时 Docker 端口冲突 | 修改 docker-compose.yml 中的端口映射，使用 `8080:80` |
-| Qwen API 申请后调用失败 | 检查阿里云 DashScope 的 API Key 权限，添加 `qwen-turbo` 模型访问 |
-| Ollama 下载模型速度慢 | 使用国内镜像或手动下载模型文件到 `~/.ollama/models` |
-| Continue 插件连接 DeepSeek 需要 API 代理 | 设置 VSCode 的 HTTP 代理环境变量 |
+| Challenge | Solution |
+|-----------|----------|
+| Docker port conflict during Dify deployment | Modify the port mapping in docker-compose.yml, use `8080:80` |
+| Qwen API call failure after application | Check API Key permissions on Alibaba Cloud DashScope, add `qwen-turbo` model access |
+| Slow model download speed in Ollama | Use a domestic mirror or manually download model files to `~/.ollama/models` |
+| Continue plugin needs API proxy to connect to DeepSeek | Set VSCode HTTP proxy environment variable |
 
-### 2. 在线模型 vs 本地模型 对比
+### 2. Online Model vs Local Model Comparison
 
-| 维度 | 在线模型 (Qwen API) | 本地模型 (Ollama + qwen2:7b) |
-|------|---------------------|-------------------------------|
-| **性能** | 响应快（<2s），可并行多请求 | 较慢（5-15s），GPU占用高 |
-| **易用性** | 仅需API Key，无需硬件配置 | 需安装Ollama、下载大文件，需GPU支持 |
-| **实用性** | 适合文档分析、联网搜索等复杂任务 | 适合代码补全、离线开发环境 |
-| **成本** | 按token计费（低量免费） | 免费（但需自备硬件） |
-| **数据隐私** | 数据上传至第三方 | 数据完全本地，适合敏感代码 |
-
-
+| Dimension | Online Model (Qwen API) | Local Model (Ollama + qwen2:7b) |
+|-----------|-------------------------|----------------------------------|
+| **Performance** | Fast response (<2s), supports parallel requests | Slower (5-15s), high GPU usage |
+| **Ease of Use** | Only need API Key, no hardware configuration required | Need to install Ollama, download large files, requires GPU |
+| **Practicality** | Suitable for document analysis, web search and other complex tasks | Suitable for code completion, offline development environments |
+| **Cost** | Billed per token (free for low usage) | Free (but requires own hardware) |
+| **Data Privacy** | Data uploaded to third party | Data completely local, suitable for sensitive code |

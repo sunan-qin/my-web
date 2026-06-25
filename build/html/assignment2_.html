@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>静态个人博客网站搭建与部署报告 &#8212; sunan-qin 1 documentation</title>
+    <title>Static Personal Blog Website Setup and Deployment Report &#8212; sunan-qin 1 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
@@ -33,113 +33,113 @@
 
           <div class="body" role="main">
             
-  <section id="id1">
-<h1>静态个人博客网站搭建与部署报告<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<section id="id2">
-<h2>一、项目概述<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>本项目的目标是搭建并部署一个静态个人博客网站，使用 Git 进行版本控制，并以 Markdown 文档记录整个过程。通过本次作业，实践了静态网站生成、Git 工作流、部署发布等前端开发的核心技能。</p>
+  <section id="static-personal-blog-website-setup-and-deployment-report">
+<h1>Static Personal Blog Website Setup and Deployment Report<a class="headerlink" href="#static-personal-blog-website-setup-and-deployment-report" title="Permalink to this headline">¶</a></h1>
+<section id="i-project-overview">
+<h2>I. Project Overview<a class="headerlink" href="#i-project-overview" title="Permalink to this headline">¶</a></h2>
+<p>The goal of this project is to build and deploy a static personal blog website, using Git for version control, and documenting the entire process in Markdown. Through this assignment, core front-end development skills such as static site generation, Git workflow, and deployment were practiced.</p>
 <ul class="simple">
-<li><p><strong>网站地址</strong>: <a class="reference external" href="https://sunan-qin.github.io/my-web">https://sunan-qin.github.io/my-web</a></p></li>
-<li><p><strong>技术栈</strong>: HTML + CSS + JavaScript（纯静态站点，未使用框架）</p></li>
-<li><p><strong>部署平台</strong>: GitHub Pages</p></li>
-<li><p><strong>版本控制</strong>: Git</p></li>
+<li><p><strong>Website URL</strong>: <a class="reference external" href="https://sunan-qin.github.io/my-web">https://sunan-qin.github.io/my-web</a></p></li>
+<li><p><strong>Tech Stack</strong>: HTML + CSS + JavaScript (pure static site, no frameworks used)</p></li>
+<li><p><strong>Deployment Platform</strong>: GitHub Pages</p></li>
+<li><p><strong>Version Control</strong>: Git</p></li>
 </ul>
 </section>
 <hr class="docutils" />
-<section id="id3">
-<h2>二、网站搭建与部署<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<section id="github-pages">
-<h3>2.1 部署平台选择：GitHub Pages<a class="headerlink" href="#github-pages" title="Permalink to this headline">¶</a></h3>
-<p>选择 GitHub Pages 的原因：</p>
-<p>| 优势 | 说明 |
-|------|------|
-| <strong>免费</strong> | 无需任何费用即可托管静态网站 |
-| <strong>与 Git 集成</strong> | 推送代码到仓库即自动部署，CI/CD 零配置 |
-| <strong>自定义域名支持</strong> | 可绑定个人域名 |
-| <strong>HTTPS 自动启用</strong> | 免费 SSL 证书，安全可靠 |
-| <strong>无需服务器运维</strong> | 不需要管理 Nginx、Apache 等 Web 服务器 |</p>
+<section id="ii-website-setup-and-deployment">
+<h2>II. Website Setup and Deployment<a class="headerlink" href="#ii-website-setup-and-deployment" title="Permalink to this headline">¶</a></h2>
+<section id="deployment-platform-selection-github-pages">
+<h3>2.1 Deployment Platform Selection: GitHub Pages<a class="headerlink" href="#deployment-platform-selection-github-pages" title="Permalink to this headline">¶</a></h3>
+<p>Reasons for choosing GitHub Pages:</p>
+<p>| Advantage | Description |
+|-----------|-------------|
+| <strong>Free</strong> | No cost required to host static websites |
+| <strong>Git Integration</strong> | Auto-deploys upon pushing code to the repository, zero-config CI/CD |
+| <strong>Custom Domain Support</strong> | Can bind a personal domain name |
+| <strong>Automatic HTTPS</strong> | Free SSL certificate, secure and reliable |
+| <strong>No Server Maintenance</strong> | No need to manage Nginx, Apache, or other web servers |</p>
 </section>
-<section id="id4">
-<h3>2.2 部署步骤<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<section id="deployment-steps">
+<h3>2.2 Deployment Steps<a class="headerlink" href="#deployment-steps" title="Permalink to this headline">¶</a></h3>
 <ol>
-<li><p><strong>创建 GitHub 仓库</strong>：在 GitHub 上创建名为 <code class="docutils literal notranslate"><span class="pre">my-web</span></code> 的仓库。</p></li>
-<li><p><strong>初始化本地项目</strong>：</p>
+<li><p><strong>Create a GitHub Repository</strong>: Create a repository named <code class="docutils literal notranslate"><span class="pre">my-web</span></code> on GitHub.</p></li>
+<li><p><strong>Initialize Local Project</strong>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git init
 git remote add origin https://github.com/sunan-qin/my-web.git
 </pre></div>
 </div>
 </li>
-<li><p><strong>构建网站文件</strong>：编写 <code class="docutils literal notranslate"><span class="pre">index.html</span></code>、<code class="docutils literal notranslate"><span class="pre">styles.css</span></code>、<code class="docutils literal notranslate"><span class="pre">script.js</span></code> 等静态文件。</p></li>
-<li><p><strong>启用 GitHub Pages</strong>：进入仓库 Settings → Pages → 将 Source 设为 <code class="docutils literal notranslate"><span class="pre">main</span></code> 分支的 <code class="docutils literal notranslate"><span class="pre">/root</span></code> 目录。</p></li>
-<li><p><strong>访问验证</strong>：等待 1-2 分钟后，通过 <code class="docutils literal notranslate"><span class="pre">https://sunan-qin.github.io/my-web</span></code> 访问。</p></li>
+<li><p><strong>Build Website Files</strong>: Write static files such as <code class="docutils literal notranslate"><span class="pre">index.html</span></code>, <code class="docutils literal notranslate"><span class="pre">styles.css</span></code>, <code class="docutils literal notranslate"><span class="pre">script.js</span></code>.</p></li>
+<li><p><strong>Enable GitHub Pages</strong>: Go to Repository Settings → Pages → Set Source to the <code class="docutils literal notranslate"><span class="pre">/root</span></code> directory of the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch.</p></li>
+<li><p><strong>Access Verification</strong>: After waiting 1-2 minutes, access via <code class="docutils literal notranslate"><span class="pre">https://sunan-qin.github.io/my-web</span></code>.</p></li>
 </ol>
 </section>
-<section id="id5">
-<h3>2.3 网站整合<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<p>在个人博客网站上，通过导航栏中的&quot;作业报告&quot;链接，指向第一份作业的 Markdown 报告文件，实现了作业内容的整合呈现。</p>
+<section id="website-integration">
+<h3>2.3 Website Integration<a class="headerlink" href="#website-integration" title="Permalink to this headline">¶</a></h3>
+<p>On the personal blog website, the &quot;Assignment Reports&quot; link in the navigation bar points to the Markdown report file of the first assignment, achieving integrated presentation of the assignment content.</p>
 </section>
 </section>
 <hr class="docutils" />
-<section id="git">
-<h2>三、使用 Git 进行版本控制<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h2>
-<section id="id6">
-<h3>3.1 Git 提交记录<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<p>以下为本项目具有代表性的 6 次 Git 提交记录：</p>
-<p>| 序号 | 提交信息 | 说明 |
-|------|----------|------|
-| 1 | <code class="docutils literal notranslate"><span class="pre">feat:</span> <span class="pre">初始化项目结构与</span> <span class="pre">README</span></code> | 创建项目骨架、初始化 Git 仓库、添加 .gitignore 和 README.md |
-| 2 | <code class="docutils literal notranslate"><span class="pre">feat:</span> <span class="pre">添加网站主页</span> <span class="pre">HTML</span> <span class="pre">结构</span></code> | 实现 index.html，包含导航栏、首页、关于我、博客列表等基本页面结构 |
-| 3 | <code class="docutils literal notranslate"><span class="pre">style:</span> <span class="pre">完成响应式</span> <span class="pre">CSS</span> <span class="pre">样式设计</span></code> | 添加完整样式表，实现移动端适配、暗色模式、排版美化 |
-| 4 | <code class="docutils literal notranslate"><span class="pre">feat:</span> <span class="pre">添加</span> <span class="pre">JavaScript</span> <span class="pre">交互脚本</span></code> | 实现导航切换、暗色模式切换、滚动动画、回到顶部等交互功能 |
-| 5 | <code class="docutils literal notranslate"><span class="pre">docs:</span> <span class="pre">整合第一份作业</span> <span class="pre">Markdown</span> <span class="pre">报告</span></code> | 将第一次作业的 Markdown 报告添加到网站，并在导航栏添加链接入口 |
-| 6 | <code class="docutils literal notranslate"><span class="pre">chore:</span> <span class="pre">配置</span> <span class="pre">GitHub</span> <span class="pre">Pages</span> <span class="pre">部署</span></code> | 配置部署分支、验证部署域名可访问性 |</p>
+<section id="iii-using-git-for-version-control">
+<h2>III. Using Git for Version Control<a class="headerlink" href="#iii-using-git-for-version-control" title="Permalink to this headline">¶</a></h2>
+<section id="git-commit-history">
+<h3>3.1 Git Commit History<a class="headerlink" href="#git-commit-history" title="Permalink to this headline">¶</a></h3>
+<p>The following are 6 representative Git commits for this project:</p>
+<p>| No. | Commit Message | Description |
+|-----|----------------|-------------|
+| 1 | <code class="docutils literal notranslate"><span class="pre">feat:</span> <span class="pre">Initialize</span> <span class="pre">project</span> <span class="pre">structure</span> <span class="pre">and</span> <span class="pre">README</span></code> | Create project skeleton, initialize Git repository, add .gitignore and README.md |
+| 2 | <code class="docutils literal notranslate"><span class="pre">feat:</span> <span class="pre">Add</span> <span class="pre">website</span> <span class="pre">homepage</span> <span class="pre">HTML</span> <span class="pre">structure</span></code> | Implement index.html, including navigation bar, homepage, about me, blog list and other basic page structures |
+| 3 | <code class="docutils literal notranslate"><span class="pre">style:</span> <span class="pre">Complete</span> <span class="pre">responsive</span> <span class="pre">CSS</span> <span class="pre">style</span> <span class="pre">design</span></code> | Add complete stylesheet, implement mobile adaptation, dark mode, typography beautification |
+| 4 | <code class="docutils literal notranslate"><span class="pre">feat:</span> <span class="pre">Add</span> <span class="pre">JavaScript</span> <span class="pre">interaction</span> <span class="pre">scripts</span></code> | Implement navigation switching, dark mode toggle, scroll animations, back to top and other interactive features |
+| 5 | <code class="docutils literal notranslate"><span class="pre">docs:</span> <span class="pre">Integrate</span> <span class="pre">first</span> <span class="pre">assignment</span> <span class="pre">Markdown</span> <span class="pre">report</span></code> | Add the first assignment's Markdown report to the website, and add a link entry in the navigation bar |
+| 6 | <code class="docutils literal notranslate"><span class="pre">chore:</span> <span class="pre">Configure</span> <span class="pre">GitHub</span> <span class="pre">Pages</span> <span class="pre">deployment</span></code> | Configure deployment branch, verify deployment domain accessibility |</p>
 </section>
-<section id="id7">
-<h3>3.2 Git 管理流程<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">main</span> <span class="n">分支</span>
+<section id="git-management-workflow">
+<h3>3.2 Git Management Workflow<a class="headerlink" href="#git-management-workflow" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">main</span> <span class="n">branch</span>
   <span class="o">|</span>
-  <span class="o">|--</span> <span class="n">commit</span> <span class="mi">1</span><span class="p">:</span> <span class="n">项目初始化</span>
-  <span class="o">|--</span> <span class="n">commit</span> <span class="mi">2</span><span class="p">:</span> <span class="n">HTML</span> <span class="n">页面结构</span>
-  <span class="o">|--</span> <span class="n">commit</span> <span class="mi">3</span><span class="p">:</span> <span class="n">CSS</span> <span class="n">样式</span>
-  <span class="o">|--</span> <span class="n">commit</span> <span class="mi">4</span><span class="p">:</span> <span class="n">JavaScript</span> <span class="n">交互</span>
-  <span class="o">|--</span> <span class="n">commit</span> <span class="mi">5</span><span class="p">:</span> <span class="n">文档整合</span>
-  <span class="o">|--</span> <span class="n">commit</span> <span class="mi">6</span><span class="p">:</span> <span class="n">部署配置</span>
+  <span class="o">|--</span> <span class="n">commit</span> <span class="mi">1</span><span class="p">:</span> <span class="n">Project</span> <span class="n">initialization</span>
+  <span class="o">|--</span> <span class="n">commit</span> <span class="mi">2</span><span class="p">:</span> <span class="n">HTML</span> <span class="n">page</span> <span class="n">structure</span>
+  <span class="o">|--</span> <span class="n">commit</span> <span class="mi">3</span><span class="p">:</span> <span class="n">CSS</span> <span class="n">styles</span>
+  <span class="o">|--</span> <span class="n">commit</span> <span class="mi">4</span><span class="p">:</span> <span class="n">JavaScript</span> <span class="n">interaction</span>
+  <span class="o">|--</span> <span class="n">commit</span> <span class="mi">5</span><span class="p">:</span> <span class="n">Document</span> <span class="n">integration</span>
+  <span class="o">|--</span> <span class="n">commit</span> <span class="mi">6</span><span class="p">:</span> <span class="n">Deployment</span> <span class="n">configuration</span>
 </pre></div>
 </div>
-<p>每个提交遵循 <strong>Conventional Commits</strong> 规范（<code class="docutils literal notranslate"><span class="pre">feat:</span></code> / <code class="docutils literal notranslate"><span class="pre">style:</span></code> / <code class="docutils literal notranslate"><span class="pre">docs:</span></code> / <code class="docutils literal notranslate"><span class="pre">chore:</span></code>），确保提交信息清晰表达变更意图，便于后期回顾和协作。</p>
+<p>Each commit follows the <strong>Conventional Commits</strong> specification (<code class="docutils literal notranslate"><span class="pre">feat:</span></code> / <code class="docutils literal notranslate"><span class="pre">style:</span></code> / <code class="docutils literal notranslate"><span class="pre">docs:</span></code> / <code class="docutils literal notranslate"><span class="pre">chore:</span></code>), ensuring that commit messages clearly express the intent of changes, facilitating later review and collaboration.</p>
 </section>
 </section>
 <hr class="docutils" />
-<section id="id8">
-<h2>四、静态站点工具选择说明<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
-<section id="html-css-js">
-<h3>4.1 为什么选择纯静态 HTML/CSS/JS？<a class="headerlink" href="#html-css-js" title="Permalink to this headline">¶</a></h3>
-<section id="id9">
-<h4>优势<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<section id="iv-static-site-tool-selection-explanation">
+<h2>IV. Static Site Tool Selection Explanation<a class="headerlink" href="#iv-static-site-tool-selection-explanation" title="Permalink to this headline">¶</a></h2>
+<section id="why-pure-static-html-css-js">
+<h3>4.1 Why Pure Static HTML/CSS/JS?<a class="headerlink" href="#why-pure-static-html-css-js" title="Permalink to this headline">¶</a></h3>
+<section id="advantages">
+<h4>Advantages<a class="headerlink" href="#advantages" title="Permalink to this headline">¶</a></h4>
 <ol class="simple">
-<li><p><strong>学习价值</strong>：从零编写 HTML/CSS/JS 能深入理解网页的工作原理，包括 DOM 结构、CSS 盒模型、Flex/Grid 布局、事件处理等核心概念。</p></li>
-<li><p><strong>零依赖</strong>：无需安装 Node.js、Ruby、Python 等运行时环境，项目结构简单清晰。</p></li>
-<li><p><strong>极速加载</strong>：无框架运行时开销，首屏加载几乎没有多余资源，用户体验好。</p></li>
-<li><p><strong>完全控制</strong>：每一行代码都可以精准控制，不会受到框架黑盒抽象的限制。</p></li>
+<li><p><strong>Learning Value</strong>: Writing HTML/CSS/JS from scratch provides a deep understanding of how web pages work, including DOM structure, CSS Box Model, Flex/Grid layout, event handling and other core concepts.</p></li>
+<li><p><strong>Zero Dependencies</strong>: No need to install Node.js, Ruby, Python or other runtime environments; the project structure is simple and clear.</p></li>
+<li><p><strong>Fast Loading</strong>: No framework runtime overhead, almost no extra resources on initial load, providing a good user experience.</p></li>
+<li><p><strong>Full Control</strong>: Every line of code can be precisely controlled, without being restricted by framework black-box abstractions.</p></li>
 </ol>
 </section>
-<section id="id10">
-<h4>适用场景分析<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
-<p>| 方案 | 适用场景 | 复杂度 |
-|------|----------|--------|
-| <strong>纯静态 HTML/CSS/JS</strong> | 个人主页、单页简历、小型博客 | ☆☆☆☆☆ |
-| <strong>Hugo / Hexo</strong> | 内容密集的博客、文档站点 | ★★★☆☆ |
-| <strong>VuePress / Docusaurus</strong> | 组件化的文档站点 | ★★★★☆ |
-| <strong>Next.js / Gatsby</strong> | 动态内容、需要 SSG/SSR 的应用 | ★★★★★ |</p>
-<p>对于本次作业的个人博客展示需求，纯静态方案是最合适的选择。</p>
+<section id="use-case-analysis">
+<h4>Use Case Analysis<a class="headerlink" href="#use-case-analysis" title="Permalink to this headline">¶</a></h4>
+<p>| Approach | Use Case | Complexity |
+|----------|----------|------------|
+| <strong>Pure Static HTML/CSS/JS</strong> | Personal homepage, single-page resume, small blog | ☆☆☆☆☆ |
+| <strong>Hugo / Hexo</strong> | Content-heavy blogs, documentation sites | ★★★☆☆ |
+| <strong>VuePress / Docusaurus</strong> | Component-based documentation sites | ★★★★☆ |
+| <strong>Next.js / Gatsby</strong> | Dynamic content, applications needing SSG/SSR | ★★★★★ |</p>
+<p>For the personal blog showcase needs of this assignment, the pure static approach is the most suitable choice.</p>
 </section>
 </section>
-<section id="id11">
-<h3>4.2 技术要点<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<section id="technical-highlights">
+<h3>4.2 Technical Highlights<a class="headerlink" href="#technical-highlights" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p><strong>HTML5 语义化标签</strong>：使用 <code class="docutils literal notranslate"><span class="pre">&lt;header&gt;</span></code>、<code class="docutils literal notranslate"><span class="pre">&lt;nav&gt;</span></code>、<code class="docutils literal notranslate"><span class="pre">&lt;main&gt;</span></code>、<code class="docutils literal notranslate"><span class="pre">&lt;article&gt;</span></code>、<code class="docutils literal notranslate"><span class="pre">&lt;footer&gt;</span></code> 等语义标签提升可访问性。</p></li>
-<li><p><strong>CSS3 现代布局</strong>：采用 Flexbox 和 CSS Grid 实现响应式布局，通过 <code class="docutils literal notranslate"><span class="pre">&#64;media</span></code> 查询适配移动端。</p></li>
-<li><p><strong>JavaScript ES6+</strong>：使用模块化的 JavaScript 编写交互逻辑，包括 DOM 操作、事件委托、本地存储等。</p></li>
+<li><p><strong>HTML5 Semantic Tags</strong>: Use semantic tags such as <code class="docutils literal notranslate"><span class="pre">&lt;header&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;nav&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;main&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;article&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;footer&gt;</span></code> to improve accessibility.</p></li>
+<li><p><strong>CSS3 Modern Layout</strong>: Use Flexbox and CSS Grid for responsive layout, with <code class="docutils literal notranslate"><span class="pre">&#64;media</span></code> queries for mobile adaptation.</p></li>
+<li><p><strong>JavaScript ES6+</strong>: Use modular JavaScript for interactive logic, including DOM manipulation, event delegation, local storage, etc.</p></li>
 </ul>
 </section>
 </section>
@@ -166,15 +166,15 @@ git remote add origin https://github.com/sunan-qin/my-web.git
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="assignment2.html">My web site</a></li>
 <li class="toctree-l1"><a class="reference internal" href="assignment1.html">Assignment1</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">静态个人博客网站搭建与部署报告</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id2">一、项目概述</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">二、网站搭建与部署</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#git">三、使用 Git 进行版本控制</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id8">四、静态站点工具选择说明</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Static Personal Blog Website Setup and Deployment Report</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#i-project-overview">I. Project Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ii-website-setup-and-deployment">II. Website Setup and Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#iii-using-git-for-version-control">III. Using Git for Version Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#iv-static-site-tool-selection-explanation">IV. Static Site Tool Selection Explanation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="assignment3.html">Assignment 3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="assignment4.html">IntelliPaper — 智能文献管理工具</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment4.html">IntelliPaper — Intelligent Literature Management Tool</a></li>
 </ul>
 
 <div class="relations">
